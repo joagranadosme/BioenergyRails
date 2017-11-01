@@ -10,12 +10,82 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031114458) do
+ActiveRecord::Schema.define(version: 20171101040840) do
+
+  create_table "areas", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "boss_departaments", force: :cascade do |t|
+    t.integer "idBoss"
+    t.integer "idDepartament"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "departaments", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "perspective"
+    t.string "description"
+    t.string "gIndicator"
+    t.string "sIndicator"
+    t.string "formula"
+    t.string "unit"
+    t.integer "weight"
+    t.integer "type"
+    t.string "measure"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "periods", force: :cascade do |t|
+    t.integer "number"
+    t.date "expiration"
+    t.integer "proposed"
+    t.integer "reached"
+    t.string "compromise"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_has_goals", force: :cascade do |t|
+    t.integer "idUser"
+    t.integer "idGoal"
+    t.integer "idPeriod"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.integer "document"
+    t.integer "idRol"
+    t.integer "idPostion"
+    t.integer "idDepartament"
+    t.integer "idArea"
+    t.integer "idBoss"
+    t.integer "step"
     t.string "password_hash"
     t.string "password_salt"
     t.datetime "created_at", null: false

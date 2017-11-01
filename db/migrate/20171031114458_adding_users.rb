@@ -1,9 +1,9 @@
 class AddingUsers < ActiveRecord::Migration[5.1]
 
   def change
-    User.new(name: "Jonathan Granados", document: 1032459412, email: "jgranadosmendez@gmail.com", password_hash: "$2a$10$YwAdkTHPmoMbOb/qT8axT.aDWCgDXRtB5WlmpAA5Rli...", password_salt: "$2a$10$YwAdkTHPmoMbOb/qT8axT.").save
-    User.new(name: "Test1", document: 123, email: "wea@gmail.com", password_hash: "$2a$10$YwAdkTHPmoMbOb/qT8axT.aDWCgDXRtB5WlmpAA5Rli...", password_salt: "$2a$10$YwAdkTHPmoMbOb/qT8axT.").save
-    User.new(name: "Test2", document: 12132, email: "test@gmail.com", password_hash: "$2a$10$YwAdkTHPmoMbOb/qT8axT.aDWCgDXRtB5WlmpAA5Rli...", password_salt: "$2a$10$YwAdkTHPmoMbOb/qT8axT.").save
+    User.new(name: "Jonathan Granados", email: "jgranadosmendez@gmail.com", document: 1032459412, password: "12345678", password_confirmation: "12345678").save
+    User.new(name: "Test1", email: "test1@gmail.com", document: 1234, password: "12345678", password_confirmation: "12345678").save
+    User.new(name: "Test2", email: "test2@gmail.com", document: 5678, password: "12345678", password_confirmation: "12345678").save
   end
 
 end

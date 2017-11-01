@@ -4,6 +4,12 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string  :name
       t.string  :email
       t.integer :document
+      t.integer :idRol
+      t.integer :idPostion
+      t.integer :idDepartament
+      t.integer :idArea
+      t.integer :idBoss
+      t.integer :step
 
       t.string  :password_hash
       t.string  :password_salt

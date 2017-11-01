@@ -5,11 +5,11 @@ class User < ApplicationRecord
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
-  validates_presence_of :email
-  validates_uniqueness_of :email
+  validates_presence_of :email, :document
+  validates_uniqueness_of :email, :document
 
-  def self.authenticate(email, password)
-    user = find_by_email(email)
+  def self.authenticate(document, password)
+    user = find_by_document(document)
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
       user
     else
@@ -23,5 +23,5 @@ class User < ApplicationRecord
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
   end
-    
+
 end
