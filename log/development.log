@@ -1766,3 +1766,123 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 52ms (Views: 25.3ms | ActiveRecord: 2.1ms)
 
 
+Started GET "/index" for 127.0.0.1 at 2017-11-01 17:07:46 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (3.9ms)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 1.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `idRol' for 3:Integer):
+    1: <h1>Index</h1>
+    2: <p>This is the message that will be displayed with the initial information.</p>
+    3: 
+    4: <% if @user.idRol == 1 %>
+    5:   <h4><%= link_to "Evaluador", evaluator_path %></h4>
+    6: <% end %>
+    7: <% if @user.idRol == 2 %>
+  
+app/views/home/index.html.erb:4:in `_app_views_home_index_html_erb___267109396599152390_47301607011060'
+Started GET "/index" for 127.0.0.1 at 2017-11-01 17:08:20 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 189ms (Views: 164.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/evaluator" for 127.0.0.1 at 2017-11-01 17:08:34 -0500
+Processing by HomeController#evaluator as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `getBosses' for #<User:0x00007f4908774ba8>):
+  
+app/controllers/home_controller.rb:8:in `evaluator'
+Started GET "/evaluator" for 127.0.0.1 at 2017-11-01 17:09:10 -0500
+Processing by HomeController#evaluator as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/evaluator.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered home/evaluator.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 61ms (Views: 39.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/log_in" for 127.0.0.1 at 2017-11-01 17:09:35 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 26ms (Views: 24.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/log_out" for 127.0.0.1 at 2017-11-01 17:09:37 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-01 17:09:37 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 23ms (Views: 21.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-11-01 17:09:40 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iA/UT1MTQn0xk9oVX1jIzY3D1HDrNouRGdnBok3TGUgRBdxmZD57BO4XYkCOVNbRXhsrt99HfMycBja8gTAr/A==", "document"=>"1032459412", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+Redirected to http://localhost:3000/index
+Completed 302 Found in 83ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/index" for 127.0.0.1 at 2017-11-01 17:09:40 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 32ms (Views: 29.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/evaluated" for 127.0.0.1 at 2017-11-01 17:09:41 -0500
+Processing by HomeController#evaluated as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/evaluated.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered home/evaluated.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 43ms (Views: 40.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/evaluator" for 127.0.0.1 at 2017-11-01 17:09:44 -0500
+Processing by HomeController#evaluator as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/evaluator.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered home/evaluator.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 36ms (Views: 32.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/evaluated" for 127.0.0.1 at 2017-11-01 17:09:46 -0500
+Processing by HomeController#evaluated as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/evaluated.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered home/evaluated.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 42ms (Views: 39.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/evaluator" for 127.0.0.1 at 2017-11-01 17:09:49 -0500
+Processing by HomeController#evaluator as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/evaluator.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendered home/evaluator.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 49ms (Views: 45.5ms | ActiveRecord: 0.5ms)
+
+

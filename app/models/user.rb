@@ -8,8 +8,8 @@ class User < ApplicationRecord
   validates_presence_of :email, :document
   validates_uniqueness_of :email, :document
 
-  def bosses(user)
-    User.where(idBoss: user.id)
+  def getBosses
+    User.all
   end
 
   def self.authenticate(document, password)

@@ -5,11 +5,11 @@ class HomeController < ApplicationController
     end
 
     def evaluator
+      @employees = current_user.getBosses
     end
 
     def evaluated
+      @bosses = current_user.getBosses
     end
-
-    private
 
 end
