@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20171101040840) do
     t.string "email"
     t.integer "document"
     t.integer "idRol"
-    t.integer "idPostion"
+    t.integer "idPosition"
     t.integer "idDepartament"
     t.integer "idArea"
     t.integer "idBoss"

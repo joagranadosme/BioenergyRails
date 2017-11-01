@@ -8,6 +8,10 @@ class User < ApplicationRecord
   validates_presence_of :email, :document
   validates_uniqueness_of :email, :document
 
+  def bosses(user)
+    Article.where(idBoss: user.id)
+  end
+
   def self.authenticate(document, password)
     user = find_by_document(document)
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)

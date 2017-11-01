@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:document], params[:password])
     if user
       session[:user_id] = user.id
-      redirect_to root_url, :notice => "Logged in!"
+      redirect_to index_path, :notice => "Logged in!"
     else
-      flash.now.alert = "Invalid documnt or password"
+      flash.now.alert = "Invalid document or password"
       render "new"
     end
   end

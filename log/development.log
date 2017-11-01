@@ -1359,3 +1359,410 @@ Migrating to CreateUserHasGoals (20171101040840)
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-01 04:11:09.465214"], ["updated_at", "2017-11-01 04:11:09.465214"]]
   [1m[35m (63.5ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2017-11-01 10:21:51 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 363ms (Views: 355.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-11-01 10:21:58 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/PRJoV2e5RyLXjszowZRL1TA4jyUHbMxU/h9D7YUqjhmfVLyla7Wr64/hLJCYl0AxIeOa5SU0NloJQUAPy6pMw==", "document"=>"1032459412", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 219ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-01 10:21:58 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 24ms (Views: 22.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-01 10:26:14 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 213ms (Views: 203.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-11-01 10:26:18 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CrvheDEFwxhbI0sA1CgMUEVJ3WAuw/5PwlCMASprPQqQMvor+TXwq35C9IE1TAB/1Q6xNy5Knaf5jfQOo1E+AQ==", "document"=>"1032459412", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+Redirected to http://localhost:3000/index
+Completed 302 Found in 88ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/index" for 127.0.0.1 at 2017-11-01 10:26:18 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (194.3ms)
+Completed 500 Internal Server Error in 198ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"home#evaluator", :controller=>"home"}):
+    1: <h1>Index</h1>
+    2: <p>This is the message that will be displayed with the initial information.</p>
+    3: 
+    4: <%= button_to "Evaluador", action: 'home#evaluator' %>
+    5: <%= button_to "Evaluado", action: 'home#evaluated' %>
+  
+app/views/home/index.html.erb:4:in `_app_views_home_index_html_erb___2469210514967156437_69870461268720'
+Started GET "/index" for 127.0.0.1 at 2017-11-01 10:27:11 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"/evaluator", :controller=>"home"}):
+    1: <h1>Index</h1>
+    2: <p>This is the message that will be displayed with the initial information.</p>
+    3: 
+    4: <%= button_to "Evaluador", action: evaluator_path %>
+    5: <%= button_to "Evaluado", action: evaluated_path %>
+  
+app/views/home/index.html.erb:4:in `_app_views_home_index_html_erb___2469210514967156437_69870494462880'
+Started GET "/index" for 127.0.0.1 at 2017-11-01 10:27:50 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/jonathan/Documents/bioenergy/app/views/home/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+r", redirect_to evaluator_path );@output_buffer.safe_append=
+                              ^
+/home/jonathan/Documents/bioenergy/app/views/home/index.html.erb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+o", redirect_to evaluated_path );
+                              ^):
+  
+app/views/home/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+app/views/home/index.html.erb:5: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+Started GET "/index" for 127.0.0.1 at 2017-11-01 10:30:25 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 19ms (Views: 18.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/evaluator" for 127.0.0.1 at 2017-11-01 10:30:31 -0500
+Processing by HomeController#evaluator as HTML
+  Rendering home/evaluator.html.erb within layouts/application
+  Rendered home/evaluator.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 25ms (Views: 23.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/evaluated" for 127.0.0.1 at 2017-11-01 10:30:36 -0500
+Processing by HomeController#evaluated as HTML
+  Rendering home/evaluated.html.erb within layouts/application
+  Rendered home/evaluated.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 27ms (Views: 24.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/evaluator" for 127.0.0.1 at 2017-11-01 10:30:47 -0500
+Processing by HomeController#evaluator as HTML
+  Rendering home/evaluator.html.erb within layouts/application
+  Rendered home/evaluator.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 35ms (Views: 33.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/evaluated" for 127.0.0.1 at 2017-11-01 10:30:49 -0500
+Processing by HomeController#evaluated as HTML
+  Rendering home/evaluated.html.erb within layouts/application
+  Rendered home/evaluated.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 28ms (Views: 26.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-01 10:42:36 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 214ms (Views: 203.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/log_out" for 127.0.0.1 at 2017-11-01 10:42:37 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-01 10:42:37 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 20ms (Views: 19.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-11-01 10:42:40 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3+zD5YnJWzWWDGNmBx8R4C/MEdyw33MjZU0tsRxO5cxG5svMvuRiTEmI2zPWEw/8/BTuG4SuhH7gktqv0K3XeA==", "document"=>"1032459412", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+Redirected to http://localhost:3000/index
+Completed 302 Found in 84ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/index" for 127.0.0.1 at 2017-11-01 10:42:40 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 20ms (Views: 17.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/new" for 127.0.0.1 at 2017-11-01 10:48:21 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/new"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/log_out" for 127.0.0.1 at 2017-11-01 10:48:24 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-01 10:48:24 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 21ms (Views: 20.3ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at 2017-11-01 10:48:25 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (206.6ms)
+Completed 200 OK in 255ms (Views: 228.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at 2017-11-01 10:51:47 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (17.1ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `idPosition' for #<User:0x00007fcb6a3f9890>
+Did you mean?  idPostion
+               idPostion?
+               idPostion=):
+    29:   </p>
+    30:   <p>
+    31:     <%= f.label :idPosition %><br />
+    32:     <%= f.number_field :idPosition %>
+    33:   </p>
+    34:   <p>
+    35:     <%= f.label :idDepartament %><br />
+  
+app/views/users/new.html.erb:32:in `block in _app_views_users_new_html_erb__655847751668318428_70255818817960'
+app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__655847751668318428_70255818817960'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (234.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (244.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171031112157)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "document" integer, "idRol" integer, "idPosition" integer, "idDepartament" integer, "idArea" integer, "idBoss" integer, "step" integer, "password_hash" varchar, "password_salt" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031112157"]]
+  [1m[35m (198.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddingUsers (20171031114458)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jgranadosmendez@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "idRol", "idPosition", "idDepartament", "idArea", "idBoss", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jonathan Granados"], ["email", "jgranadosmendez@gmail.com"], ["document", 1032459412], ["idRol", 1], ["idPosition", 1], ["idDepartament", 1], ["idArea", 1], ["idBoss", -1], ["step", 0], ["password_hash", "$2a$10$TheJBPItQzEHLHs8zm44suEzlbXLbXXBfhXEftKMOjOlin1vFXEOe"], ["password_salt", "$2a$10$TheJBPItQzEHLHs8zm44su"], ["created_at", "2017-11-01 15:54:49.947873"], ["updated_at", "2017-11-01 15:54:49.947873"]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1234], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "idRol", "idPosition", "idDepartament", "idArea", "idBoss", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Test1"], ["email", "test1@gmail.com"], ["document", 1234], ["idRol", 1], ["idPosition", 1], ["idDepartament", 1], ["idArea", 1], ["idBoss", -1], ["step", 0], ["password_hash", "$2a$10$wrCNmNRK515nVenj2PVnDOCoy.mg/0tViGaej.PM7/JDIBZV4Wb6q"], ["password_salt", "$2a$10$wrCNmNRK515nVenj2PVnDO"], ["created_at", "2017-11-01 15:54:50.030254"], ["updated_at", "2017-11-01 15:54:50.030254"]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 5678], ["LIMIT", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "idRol", "idPosition", "idDepartament", "idArea", "idBoss", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Test2"], ["email", "test2@gmail.com"], ["document", 5678], ["idRol", 1], ["idPosition", 1], ["idDepartament", 1], ["idArea", 1], ["idBoss", -1], ["step", 0], ["password_hash", "$2a$10$LPGTvO3TBuFZenNwrcM5GupOS9G40PuGqowJ1iGNPo6i.1X5YJdm6"], ["password_salt", "$2a$10$LPGTvO3TBuFZenNwrcM5Gu"], ["created_at", "2017-11-01 15:54:50.109071"], ["updated_at", "2017-11-01 15:54:50.109071"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031114458"]]
+  [1m[35m (163.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateAreas (20171101040337)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "areas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171101040337"]]
+  [1m[35m (228.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateBossDepartaments (20171101040433)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "boss_departaments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "idBoss" integer, "idDepartament" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171101040433"]]
+  [1m[35m (225.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDepartaments (20171101040449)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "departaments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171101040449"]]
+  [1m[35m (211.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateGoals (20171101040623)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "goals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "perspective" varchar, "description" varchar, "gIndicator" varchar, "sIndicator" varchar, "formula" varchar, "unit" varchar, "weight" integer, "type" integer, "measure" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171101040623"]]
+  [1m[35m (216.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePeriods (20171101040744)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "periods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "number" integer, "expiration" date, "proposed" integer, "reached" integer, "compromise" varchar, "comment" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171101040744"]]
+  [1m[35m (238.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePositions (20171101040755)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "positions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171101040755"]]
+  [1m[35m (229.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRoles (20171101040814)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171101040814"]]
+  [1m[35m (194.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUserHasGoals (20171101040840)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "user_has_goals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "idUser" integer, "idGoal" integer, "idPeriod" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171101040840"]]
+  [1m[35m (222.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-01 15:54:52.174347"], ["updated_at", "2017-11-01 15:54:52.174347"]]
+  [1m[35m (170.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/sign_up" for 127.0.0.1 at 2017-11-01 10:55:02 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (100.9ms)
+Completed 500 Internal Server Error in 133ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `hidden_value' for #<ActionView::Helpers::FormBuilder:0x000055dae4fd7e78>
+Did you mean?  hidden_field):
+    40:     <%= f.number_field :idArea %>
+    41:   </p>
+    42: 
+    43:   <%= f.hidden_value :idBoss, :value => -1 %>
+    44:   <%= f.hidden_value :step, :value => -1 %>
+    45: 
+    46:   <p>
+  
+app/views/users/new.html.erb:43:in `block in _app_views_users_new_html_erb___2667378899336893476_47199320083060'
+app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb___2667378899336893476_47199320083060'
+Started GET "/sign_up" for 127.0.0.1 at 2017-11-01 10:55:47 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (27.7ms)
+Completed 200 OK in 164ms (Views: 162.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/log_in" for 127.0.0.1 at 2017-11-01 10:56:15 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 22ms (Views: 20.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-11-01 10:56:18 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y5JByrLG/chWtf95rOm/1bStYWLpWMf4UZKpz5KO+kpSmEnjhevEsYkxRyx95aHJZ3Wepd0pMKXUTV7RXm3I/g==", "document"=>"1032459412", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+Redirected to http://localhost:3000/index
+Completed 302 Found in 85ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/index" for 127.0.0.1 at 2017-11-01 10:56:18 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 22ms (Views: 19.5ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? AND ("users"."id" != ?) LIMIT ?[0m  [["email", "jgranadosmendez@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? AND ("users"."id" != ?) LIMIT ?[0m  [["document", 1032459412], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "idRol" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["idRol", 3], ["updated_at", "2017-11-01 15:57:04.044951"], ["id", 1]]
+  [1m[35m (204.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/index" for 127.0.0.1 at 2017-11-01 10:57:06 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 23ms (Views: 21.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/index" for 127.0.0.1 at 2017-11-01 11:00:58 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (undefined method `getRol' for #<User:0x000055dae7031688>):
+  
+app/controllers/home_controller.rb:4:in `index'
+Started GET "/index" for 127.0.0.1 at 2017-11-01 11:01:20 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 1.4ms)
+
+
+  
+NoMethodError (undefined method `getRol' for #<User:0x00007fcd316e4780>):
+  
+app/controllers/home_controller.rb:4:in `index'
+Started GET "/index" for 127.0.0.1 at 2017-11-01 11:02:01 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 52ms (Views: 25.3ms | ActiveRecord: 2.1ms)
+
+

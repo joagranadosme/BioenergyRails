@@ -12,9 +12,37 @@
     </div>
   <% end %>
   <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </p>
+  <p>
+    <%= f.label :document %><br />
+    <%= f.number_field :document %>
+  </p>
+  <p>
+    <%= f.label :idRol %><br />
+    <%= f.number_field :idRol %>
+  </p>
+  <p>
+    <%= f.label :idPosition %><br />
+    <%= f.number_field :idPosition %>
+  </p>
+  <p>
+    <%= f.label :idDepartament %><br />
+    <%= f.number_field :idDepartament %>
+  </p>
+  <p>
+    <%= f.label :idArea %><br />
+    <%= f.number_field :idArea %>
+  </p>
+
+  <%= f.hidden_field :idBoss, :value => -1 %>
+  <%= f.hidden_field :step, :value => -1 %>
+
   <p>
     <%= f.label :password %><br />
     <%= f.password_field :password %>
