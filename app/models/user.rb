@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :email, :document
 
   def bosses(user)
-    Article.where(idBoss: user.id)
+    User.where(idBoss: user.id)
   end
 
   def self.authenticate(document, password)

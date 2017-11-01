@@ -1,15 +1,13 @@
 <h1>Index</h1>
 <p>This is the message that will be displayed with the initial information.</p>
 
-<p><%= @user.inspect %></p>
-
-<% if @user == 1 %>
+<% if @user.idRol == 1 %>
   <h4><%= link_to "Evaluador", evaluator_path %></h4>
 <% end %>
-<% if @user == 2 %>
+<% if @user.idRol == 2 %>
   <h4><%= link_to "Evaluado", evaluated_path %></h4>
 <% end %>
-<% if @user == 3 %>
+<% if @user.idRol == 3 %>
   <h4><%= link_to "Evaluador", evaluator_path %></h4>
   <h4><%= link_to "Evaluado", evaluated_path %></h4>
 <% end %>
