@@ -6,6 +6,5 @@ class CreateRoles < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-    add_index :roles, :user_id
   end
 end

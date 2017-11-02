@@ -1,15 +1,15 @@
 class HomeController < ApplicationController
 
     def index
-      @user = current_user
+      @role = current_user.role
     end
 
     def evaluator
-      @employees = current_user.getBosses
+      @step = current_user.step
     end
 
     def evaluated
-      @bosses = current_user.getBosses
+      @step = current_user.step
     end
 
 end

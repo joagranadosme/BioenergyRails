@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102154615) do
+ActiveRecord::Schema.define(version: 20171102164352) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_areas_on_user_id"
   end
 
   create_table "charges", force: :cascade do |t|
@@ -25,15 +24,13 @@ ActiveRecord::Schema.define(version: 20171102154615) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_charges_on_user_id"
   end
 
   create_table "departaments", force: :cascade do |t|
-    t.string "area"
+    t.string "name"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_departaments_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -41,7 +38,6 @@ ActiveRecord::Schema.define(version: 20171102154615) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_roles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,10 +46,18 @@ ActiveRecord::Schema.define(version: 20171102154615) do
     t.integer "document"
     t.integer "step"
     t.integer "boss"
+    t.integer "departament_id"
+    t.integer "role_id"
+    t.integer "charge_id"
+    t.integer "area_id"
     t.string "password_hash"
     t.string "password_salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_users_on_area_id"
+    t.index ["charge_id"], name: "index_users_on_charge_id"
+    t.index ["departament_id"], name: "index_users_on_departament_id"
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
 end

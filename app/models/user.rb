@@ -8,12 +8,10 @@ class User < ApplicationRecord
   validates_presence_of :email, :document
   validates_uniqueness_of :email, :document
 
-  has_one :departament
-  has_one :role
-  has_one :charge
-  has_one :area
-  has_one :boss, :class_name => 'User'
-  #belongs_to :boss, :class_name => 'User'
+  belongs_to :departament
+  belongs_to :role
+  belongs_to :charge
+  belongs_to :area
 
   def getBosses
     User.all

@@ -1,0 +1,12 @@
+<h1>Escoge a tu jefe</h1>
+<p>Chachara</p>
+
+<ul>
+  <% if @bosses.nil? %>
+  <li>No hay jefes para seleccionar</li>
+  <% else %>
+    <% @bosses.each do |b| %>
+      <li><%= b.name %></li>
+    <% end %>
+  <% end %>
+</ul>
