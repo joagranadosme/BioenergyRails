@@ -9,6 +9,10 @@ class User < ApplicationRecord
   validates_uniqueness_of :email, :document
 
   has_one :departament
+  has_one :role
+  has_one :charge
+  has_one :area
+  has_one :boss, :class_name => 'User'
 
   def getBosses
     User.all
