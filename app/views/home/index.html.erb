@@ -1,13 +1,13 @@
 <h1>Index</h1>
 <p>This is the message that will be displayed with the initial information.</p>
 
-<% if @user.idRol == 1 %>
+<% if @role.id == 1 %>
   <h4><%= link_to "Evaluador", evaluator_path %></h4>
-<% end %>
-<% if @user.idRol == 2 %>
+<% elsif @role.id == 2 %>
   <h4><%= link_to "Evaluado", evaluated_path %></h4>
-<% end %>
-<% if @user.idRol == 3 %>
+<% elsif @role.id == 3 %>
   <h4><%= link_to "Evaluador", evaluator_path %></h4>
   <h4><%= link_to "Evaluado", evaluated_path %></h4>
+<% else %>
+  <p>Error!</p>
 <% end %>

@@ -1,2 +1,0 @@
-class BossDepartament < ApplicationRecord
-end

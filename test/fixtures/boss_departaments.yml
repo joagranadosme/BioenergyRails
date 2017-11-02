@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  idBoss: 1
-  idDepartament: 1
-
-two:
-  idBoss: 1
-  idDepartament: 1

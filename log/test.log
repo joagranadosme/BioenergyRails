@@ -1,0 +1,690 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (166.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (203.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171031112157)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "document" integer, "step" integer, "boss" integer, "password_hash" varchar, "password_salt" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031112157"]]
+  [1m[35m (183.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDepartaments (20171102153855)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "departaments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_departaments_on_user_id" ON "departaments" ("user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102153855"]]
+  [1m[35m (216.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRoles (20171102154554)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_roles_on_user_id" ON "roles" ("user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154554"]]
+  [1m[35m (236.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCharges (20171102154607)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "charges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_charges_on_user_id" ON "charges" ("user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154607"]]
+  [1m[35m (217.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateAreas (20171102154615)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "areas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_areas_on_user_id" ON "areas" ("user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154615"]]
+  [1m[35m (192.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddingData (20171102164352)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerencia"], ["created_at", "2017-11-02 17:04:59.684625"], ["updated_at", "2017-11-02 17:04:59.684625"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sistemas"], ["created_at", "2017-11-02 17:04:59.686590"], ["updated_at", "2017-11-02 17:04:59.686590"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerente"], ["created_at", "2017-11-02 17:04:59.697616"], ["updated_at", "2017-11-02 17:04:59.697616"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Ingeniero"], ["created_at", "2017-11-02 17:04:59.699457"], ["updated_at", "2017-11-02 17:04:59.699457"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Administración"], ["created_at", "2017-11-02 17:04:59.708641"], ["updated_at", "2017-11-02 17:04:59.708641"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Comunicaciones"], ["created_at", "2017-11-02 17:04:59.709980"], ["updated_at", "2017-11-02 17:04:59.709980"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluador"], ["created_at", "2017-11-02 17:04:59.721764"], ["updated_at", "2017-11-02 17:04:59.721764"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluado"], ["created_at", "2017-11-02 17:04:59.723083"], ["updated_at", "2017-11-02 17:04:59.723083"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "EvaluadorEvaluado"], ["created_at", "2017-11-02 17:04:59.724148"], ["updated_at", "2017-11-02 17:04:59.724148"]]
+  [1m[36mArea Load (0.2ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddingData (20171102164352)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerencia"], ["created_at", "2017-11-02 17:06:47.445811"], ["updated_at", "2017-11-02 17:06:47.445811"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sistemas"], ["created_at", "2017-11-02 17:06:47.447467"], ["updated_at", "2017-11-02 17:06:47.447467"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerente"], ["created_at", "2017-11-02 17:06:47.456695"], ["updated_at", "2017-11-02 17:06:47.456695"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Ingeniero"], ["created_at", "2017-11-02 17:06:47.458771"], ["updated_at", "2017-11-02 17:06:47.458771"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Administración"], ["created_at", "2017-11-02 17:06:47.468471"], ["updated_at", "2017-11-02 17:06:47.468471"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Comunicaciones"], ["created_at", "2017-11-02 17:06:47.469827"], ["updated_at", "2017-11-02 17:06:47.469827"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluador"], ["created_at", "2017-11-02 17:06:47.477463"], ["updated_at", "2017-11-02 17:06:47.477463"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluado"], ["created_at", "2017-11-02 17:06:47.478787"], ["updated_at", "2017-11-02 17:06:47.478787"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "EvaluadorEvaluado"], ["created_at", "2017-11-02 17:06:47.479759"], ["updated_at", "2017-11-02 17:06:47.479759"]]
+  [1m[36mArea Load (0.2ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddingData (20171102164352)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerencia"], ["created_at", "2017-11-02 17:07:02.063281"], ["updated_at", "2017-11-02 17:07:02.063281"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sistemas"], ["created_at", "2017-11-02 17:07:02.065101"], ["updated_at", "2017-11-02 17:07:02.065101"]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerente"], ["created_at", "2017-11-02 17:07:02.075518"], ["updated_at", "2017-11-02 17:07:02.075518"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Ingeniero"], ["created_at", "2017-11-02 17:07:02.078595"], ["updated_at", "2017-11-02 17:07:02.078595"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Administración"], ["created_at", "2017-11-02 17:07:02.087846"], ["updated_at", "2017-11-02 17:07:02.087846"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Comunicaciones"], ["created_at", "2017-11-02 17:07:02.089201"], ["updated_at", "2017-11-02 17:07:02.089201"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluador"], ["created_at", "2017-11-02 17:07:02.097289"], ["updated_at", "2017-11-02 17:07:02.097289"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluado"], ["created_at", "2017-11-02 17:07:02.098837"], ["updated_at", "2017-11-02 17:07:02.098837"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "EvaluadorEvaluado"], ["created_at", "2017-11-02 17:07:02.099866"], ["updated_at", "2017-11-02 17:07:02.099866"]]
+  [1m[36mArea Load (0.2ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.3ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.2ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddingData (20171102164352)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerencia"], ["created_at", "2017-11-02 17:07:19.014088"], ["updated_at", "2017-11-02 17:07:19.014088"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sistemas"], ["created_at", "2017-11-02 17:07:19.015923"], ["updated_at", "2017-11-02 17:07:19.015923"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerente"], ["created_at", "2017-11-02 17:07:19.028645"], ["updated_at", "2017-11-02 17:07:19.028645"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Ingeniero"], ["created_at", "2017-11-02 17:07:19.030706"], ["updated_at", "2017-11-02 17:07:19.030706"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Administración"], ["created_at", "2017-11-02 17:07:19.039469"], ["updated_at", "2017-11-02 17:07:19.039469"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Comunicaciones"], ["created_at", "2017-11-02 17:07:19.041035"], ["updated_at", "2017-11-02 17:07:19.041035"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluador"], ["created_at", "2017-11-02 17:07:19.050043"], ["updated_at", "2017-11-02 17:07:19.050043"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluado"], ["created_at", "2017-11-02 17:07:19.051290"], ["updated_at", "2017-11-02 17:07:19.051290"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "EvaluadorEvaluado"], ["created_at", "2017-11-02 17:07:19.052262"], ["updated_at", "2017-11-02 17:07:19.052262"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102164352"]]
+  [1m[35m (196.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2017-11-02 17:07:19.265962"], ["updated_at", "2017-11-02 17:07:19.265962"]]
+  [1m[35m (160.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_areas_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_areas_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_charges_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_charges_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_departaments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_departaments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (323.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (207.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171031112157)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "document" integer, "step" integer, "boss" integer, "password_hash" varchar, "password_salt" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031112157"]]
+  [1m[35m (209.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDepartaments (20171102153855)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "departaments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_departaments_on_user_id" ON "departaments" ("user_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102153855"]]
+  [1m[35m (223.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRoles (20171102154554)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_roles_on_user_id" ON "roles" ("user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154554"]]
+  [1m[35m (254.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCharges (20171102154607)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "charges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_charges_on_user_id" ON "charges" ("user_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154607"]]
+  [1m[35m (203.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateAreas (20171102154615)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "areas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_areas_on_user_id" ON "areas" ("user_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154615"]]
+  [1m[35m (171.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddingData (20171102164352)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerencia"], ["created_at", "2017-11-02 17:07:50.257940"], ["updated_at", "2017-11-02 17:07:50.257940"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sistemas"], ["created_at", "2017-11-02 17:07:50.259893"], ["updated_at", "2017-11-02 17:07:50.259893"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerente"], ["created_at", "2017-11-02 17:07:50.267914"], ["updated_at", "2017-11-02 17:07:50.267914"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Ingeniero"], ["created_at", "2017-11-02 17:07:50.269294"], ["updated_at", "2017-11-02 17:07:50.269294"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Administración"], ["created_at", "2017-11-02 17:07:50.280255"], ["updated_at", "2017-11-02 17:07:50.280255"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Comunicaciones"], ["created_at", "2017-11-02 17:07:50.282250"], ["updated_at", "2017-11-02 17:07:50.282250"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluador"], ["created_at", "2017-11-02 17:07:50.290156"], ["updated_at", "2017-11-02 17:07:50.290156"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluado"], ["created_at", "2017-11-02 17:07:50.291743"], ["updated_at", "2017-11-02 17:07:50.291743"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "EvaluadorEvaluado"], ["created_at", "2017-11-02 17:07:50.292829"], ["updated_at", "2017-11-02 17:07:50.292829"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102164352"]]
+  [1m[35m (142.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2017-11-02 17:07:50.451260"], ["updated_at", "2017-11-02 17:07:50.451260"]]
+  [1m[35m (105.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_areas_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_areas_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_charges_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_charges_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_departaments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_departaments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (119.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (109.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171031112157)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "document" integer, "step" integer, "boss" integer, "password_hash" varchar, "password_salt" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031112157"]]
+  [1m[35m (95.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDepartaments (20171102153855)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "departaments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_departaments_on_user_id" ON "departaments" ("user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102153855"]]
+  [1m[35m (159.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRoles (20171102154554)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_roles_on_user_id" ON "roles" ("user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154554"]]
+  [1m[35m (102.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCharges (20171102154607)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "charges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_charges_on_user_id" ON "charges" ("user_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154607"]]
+  [1m[35m (124.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateAreas (20171102154615)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "areas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_areas_on_user_id" ON "areas" ("user_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154615"]]
+  [1m[35m (98.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddingData (20171102164352)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerencia"], ["created_at", "2017-11-02 17:08:15.593859"], ["updated_at", "2017-11-02 17:08:15.593859"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sistemas"], ["created_at", "2017-11-02 17:08:15.595794"], ["updated_at", "2017-11-02 17:08:15.595794"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerente"], ["created_at", "2017-11-02 17:08:15.607947"], ["updated_at", "2017-11-02 17:08:15.607947"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Ingeniero"], ["created_at", "2017-11-02 17:08:15.609741"], ["updated_at", "2017-11-02 17:08:15.609741"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Administración"], ["created_at", "2017-11-02 17:08:15.618735"], ["updated_at", "2017-11-02 17:08:15.618735"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Comunicaciones"], ["created_at", "2017-11-02 17:08:15.620177"], ["updated_at", "2017-11-02 17:08:15.620177"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluador"], ["created_at", "2017-11-02 17:08:15.627649"], ["updated_at", "2017-11-02 17:08:15.627649"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluado"], ["created_at", "2017-11-02 17:08:15.629090"], ["updated_at", "2017-11-02 17:08:15.629090"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "EvaluadorEvaluado"], ["created_at", "2017-11-02 17:08:15.630188"], ["updated_at", "2017-11-02 17:08:15.630188"]]
+  [1m[36mArea Load (0.2ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddingData (20171102164352)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerencia"], ["created_at", "2017-11-02 17:09:04.356883"], ["updated_at", "2017-11-02 17:09:04.356883"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sistemas"], ["created_at", "2017-11-02 17:09:04.359534"], ["updated_at", "2017-11-02 17:09:04.359534"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerente"], ["created_at", "2017-11-02 17:09:04.372474"], ["updated_at", "2017-11-02 17:09:04.372474"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Ingeniero"], ["created_at", "2017-11-02 17:09:04.374670"], ["updated_at", "2017-11-02 17:09:04.374670"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Administración"], ["created_at", "2017-11-02 17:09:04.384221"], ["updated_at", "2017-11-02 17:09:04.384221"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Comunicaciones"], ["created_at", "2017-11-02 17:09:04.385566"], ["updated_at", "2017-11-02 17:09:04.385566"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluador"], ["created_at", "2017-11-02 17:09:04.393098"], ["updated_at", "2017-11-02 17:09:04.393098"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluado"], ["created_at", "2017-11-02 17:09:04.394372"], ["updated_at", "2017-11-02 17:09:04.394372"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "EvaluadorEvaluado"], ["created_at", "2017-11-02 17:09:04.395419"], ["updated_at", "2017-11-02 17:09:04.395419"]]
+  [1m[36mArea Load (0.2ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.2ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "joagranadosmendez@unal.edu.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jonathan Granados"], ["email", "joagranadosmendez@unal.edu.co"], ["document", 1032459412], ["step", 0], ["password_hash", "$2a$10$nloE1yjxtbjHDuk1RwZC1.fU0p7Hmm/o8Alh1hNF1jfLv8gI2yiT."], ["password_salt", "$2a$10$nloE1yjxtbjHDuk1RwZC1."], ["created_at", "2017-11-02 17:09:04.503139"], ["updated_at", "2017-11-02 17:09:04.503139"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 1], ["updated_at", "2017-11-02 17:09:04.504819"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 1], ["updated_at", "2017-11-02 17:09:04.506435"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 1], ["updated_at", "2017-11-02 17:09:04.507646"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 1], ["updated_at", "2017-11-02 17:09:04.508883"], ["id", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102164352"]]
+  [1m[35m (209.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2017-11-02 17:09:04.735102"], ["updated_at", "2017-11-02 17:09:04.735102"]]
+  [1m[35m (136.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_areas_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_areas_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_charges_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_charges_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_departaments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_departaments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (203.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (198.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171031112157)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "document" integer, "step" integer, "boss" integer, "password_hash" varchar, "password_salt" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031112157"]]
+  [1m[35m (164.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDepartaments (20171102153855)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "departaments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "index_departaments_on_user_id" ON "departaments" ("user_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102153855"]]
+  [1m[35m (233.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRoles (20171102154554)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX "index_roles_on_user_id" ON "roles" ("user_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154554"]]
+  [1m[35m (223.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCharges (20171102154607)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "charges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_charges_on_user_id" ON "charges" ("user_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154607"]]
+  [1m[35m (193.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateAreas (20171102154615)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "areas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_areas_on_user_id" ON "areas" ("user_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154615"]]
+  [1m[35m (219.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddingData (20171102164352)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerencia"], ["created_at", "2017-11-02 17:09:34.736119"], ["updated_at", "2017-11-02 17:09:34.736119"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sistemas"], ["created_at", "2017-11-02 17:09:34.738287"], ["updated_at", "2017-11-02 17:09:34.738287"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerente"], ["created_at", "2017-11-02 17:09:34.746611"], ["updated_at", "2017-11-02 17:09:34.746611"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Ingeniero"], ["created_at", "2017-11-02 17:09:34.747981"], ["updated_at", "2017-11-02 17:09:34.747981"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Administración"], ["created_at", "2017-11-02 17:09:34.756083"], ["updated_at", "2017-11-02 17:09:34.756083"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Comunicaciones"], ["created_at", "2017-11-02 17:09:34.757427"], ["updated_at", "2017-11-02 17:09:34.757427"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluador"], ["created_at", "2017-11-02 17:09:34.767333"], ["updated_at", "2017-11-02 17:09:34.767333"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluado"], ["created_at", "2017-11-02 17:09:34.769008"], ["updated_at", "2017-11-02 17:09:34.769008"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "EvaluadorEvaluado"], ["created_at", "2017-11-02 17:09:34.770382"], ["updated_at", "2017-11-02 17:09:34.770382"]]
+  [1m[36mArea Load (0.2ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.3ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "joagranadosmendez@unal.edu.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jonathan Granados"], ["email", "joagranadosmendez@unal.edu.co"], ["document", 1032459412], ["step", 0], ["password_hash", "$2a$10$5UoiGT6oaLZEZNr7kUChA.RnsltmTJMB9Q8eH4vAksXGYpuHn30oG"], ["password_salt", "$2a$10$5UoiGT6oaLZEZNr7kUChA."], ["created_at", "2017-11-02 17:09:34.882948"], ["updated_at", "2017-11-02 17:09:34.882948"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 1], ["updated_at", "2017-11-02 17:09:34.884549"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 1], ["updated_at", "2017-11-02 17:09:34.886132"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 1], ["updated_at", "2017-11-02 17:09:34.887212"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 1], ["updated_at", "2017-11-02 17:09:34.888264"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "alexander:forero@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1234], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Alexander Forero"], ["email", "alexander:forero@gmail.com"], ["document", 1234], ["step", 0], ["password_hash", "$2a$10$mgArBuSRl7BLpwhZ6nwLWO5p3V1kML7t6lxywKMit9hNINC9H6/om"], ["password_salt", "$2a$10$mgArBuSRl7BLpwhZ6nwLWO"], ["created_at", "2017-11-02 17:09:34.969426"], ["updated_at", "2017-11-02 17:09:34.969426"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 2], ["updated_at", "2017-11-02 17:09:34.970866"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 2], ["updated_at", "2017-11-02 17:09:34.972196"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 2], ["updated_at", "2017-11-02 17:09:34.973288"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 2], ["updated_at", "2017-11-02 17:09:34.974362"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "joagranadosmendez@unal.edu.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "cullen.bergstrom@bogangrady.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 665295189], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Cheyanne Hansen"], ["email", "cullen.bergstrom@bogangrady.com"], ["document", 665295189], ["step", 0], ["password_hash", "$2a$10$xlFII61KiVXY2Cz/QneT.eAw8PcaOouhfpPQIFVmh5IhogTEYUbYm"], ["password_salt", "$2a$10$xlFII61KiVXY2Cz/QneT.e"], ["created_at", "2017-11-02 17:09:35.677771"], ["updated_at", "2017-11-02 17:09:35.677771"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 3], ["updated_at", "2017-11-02 17:09:35.679325"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 3], ["updated_at", "2017-11-02 17:09:35.680653"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 3], ["updated_at", "2017-11-02 17:09:35.681774"], ["id", 2]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 3], ["updated_at", "2017-11-02 17:09:35.682899"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "vern_brakus@ritchie.name"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 707988808], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mrs. Nora Anderson"], ["email", "vern_brakus@ritchie.name"], ["document", 707988808], ["step", 0], ["password_hash", "$2a$10$twEJhj3dnPEcBSLx147b3eb7.5uT/hTSdBH5E/COA5EFAlYzj6/oK"], ["password_salt", "$2a$10$twEJhj3dnPEcBSLx147b3e"], ["created_at", "2017-11-02 17:09:35.764920"], ["updated_at", "2017-11-02 17:09:35.764920"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 4], ["updated_at", "2017-11-02 17:09:35.766281"], ["id", 2]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 4], ["updated_at", "2017-11-02 17:09:35.767450"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 4], ["updated_at", "2017-11-02 17:09:35.768570"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 4], ["updated_at", "2017-11-02 17:09:35.769621"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sim_fritsch@leffler.io"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 961834877], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dr. Cameron Mosciski"], ["email", "sim_fritsch@leffler.io"], ["document", 961834877], ["step", 0], ["password_hash", "$2a$10$Oh8WsF3Ngi6ZoPqSKukwzeBfBRtvZIiyX7noVdnSe4fO1iHrNxSda"], ["password_salt", "$2a$10$Oh8WsF3Ngi6ZoPqSKukwze"], ["created_at", "2017-11-02 17:09:35.851213"], ["updated_at", "2017-11-02 17:09:35.851213"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 5], ["updated_at", "2017-11-02 17:09:35.852907"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 5], ["updated_at", "2017-11-02 17:09:35.854315"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 5], ["updated_at", "2017-11-02 17:09:35.855424"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 5], ["updated_at", "2017-11-02 17:09:35.856526"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jany_turner@thompson.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 592153164], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mr. Bertram Rodriguez"], ["email", "jany_turner@thompson.com"], ["document", 592153164], ["step", 0], ["password_hash", "$2a$10$Zq5oVUecAiwxmRV0cXfOWuudSdMbkkUmOPZAIO9fYuM0FA55P.wzO"], ["password_salt", "$2a$10$Zq5oVUecAiwxmRV0cXfOWu"], ["created_at", "2017-11-02 17:09:35.938290"], ["updated_at", "2017-11-02 17:09:35.938290"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 6], ["updated_at", "2017-11-02 17:09:35.939710"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 6], ["updated_at", "2017-11-02 17:09:35.941084"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 6], ["updated_at", "2017-11-02 17:09:35.942277"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 6], ["updated_at", "2017-11-02 17:09:35.943345"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "geovany@auer.biz"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 146411648], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Gail Shanahan"], ["email", "geovany@auer.biz"], ["document", 146411648], ["step", 0], ["password_hash", "$2a$10$I6NySRzu26qWImUH8bv7OO4sfC4Nndjc6MOLFcDkv/czgKkL2L5uK"], ["password_salt", "$2a$10$I6NySRzu26qWImUH8bv7OO"], ["created_at", "2017-11-02 17:09:36.024610"], ["updated_at", "2017-11-02 17:09:36.024610"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 7], ["updated_at", "2017-11-02 17:09:36.025982"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 7], ["updated_at", "2017-11-02 17:09:36.027187"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 7], ["updated_at", "2017-11-02 17:09:36.028316"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 7], ["updated_at", "2017-11-02 17:09:36.029307"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "hershel@brakusveum.net"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 274410840], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Lelia Kling"], ["email", "hershel@brakusveum.net"], ["document", 274410840], ["step", 0], ["password_hash", "$2a$10$6ARZIbcx6.HnIxnoFK8J4OrmuMYZvuiEnGiqGY7YubNrPOdZWfRU."], ["password_salt", "$2a$10$6ARZIbcx6.HnIxnoFK8J4O"], ["created_at", "2017-11-02 17:09:36.110330"], ["updated_at", "2017-11-02 17:09:36.110330"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 8], ["updated_at", "2017-11-02 17:09:36.111642"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 8], ["updated_at", "2017-11-02 17:09:36.112906"], ["id", 2]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 8], ["updated_at", "2017-11-02 17:09:36.113966"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 8], ["updated_at", "2017-11-02 17:09:36.115189"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "olin.rosenbaum@maggio.net"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 365347543], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Wayne Wunsch"], ["email", "olin.rosenbaum@maggio.net"], ["document", 365347543], ["step", 0], ["password_hash", "$2a$10$GnD1nBPI5GUFbwJNx/VVhuuJtkF9QCMUV6fUtS20b5U19CY0gVPGi"], ["password_salt", "$2a$10$GnD1nBPI5GUFbwJNx/VVhu"], ["created_at", "2017-11-02 17:09:36.197773"], ["updated_at", "2017-11-02 17:09:36.197773"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 9], ["updated_at", "2017-11-02 17:09:36.199163"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 9], ["updated_at", "2017-11-02 17:09:36.200373"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 9], ["updated_at", "2017-11-02 17:09:36.201394"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 9], ["updated_at", "2017-11-02 17:09:36.202441"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "antonia@von.info"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 307625014], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Coty Mann"], ["email", "antonia@von.info"], ["document", 307625014], ["step", 0], ["password_hash", "$2a$10$hCGMDEuftCrrFcUZ5yy6qeq9haYO6eUM/vk0qBhM4d2AZY9HpbRD."], ["password_salt", "$2a$10$hCGMDEuftCrrFcUZ5yy6qe"], ["created_at", "2017-11-02 17:09:36.285824"], ["updated_at", "2017-11-02 17:09:36.285824"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 10], ["updated_at", "2017-11-02 17:09:36.287256"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 10], ["updated_at", "2017-11-02 17:09:36.288462"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 10], ["updated_at", "2017-11-02 17:09:36.289465"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 10], ["updated_at", "2017-11-02 17:09:36.290483"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "makayla@lefflerebert.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 528906498], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ms. Johanna Stark"], ["email", "makayla@lefflerebert.org"], ["document", 528906498], ["step", 0], ["password_hash", "$2a$10$1U1EW36iZuBFN5BiWs42P.WJbhS8qE0HeDK4lo4tCCFLH1xNGhP9W"], ["password_salt", "$2a$10$1U1EW36iZuBFN5BiWs42P."], ["created_at", "2017-11-02 17:09:36.372095"], ["updated_at", "2017-11-02 17:09:36.372095"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 11], ["updated_at", "2017-11-02 17:09:36.373458"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 11], ["updated_at", "2017-11-02 17:09:36.374695"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 11], ["updated_at", "2017-11-02 17:09:36.375744"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 11], ["updated_at", "2017-11-02 17:09:36.376762"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mara.gottlieb@hermann.biz"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 5233076], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mr. Herman Gerhold"], ["email", "mara.gottlieb@hermann.biz"], ["document", 5233076], ["step", 0], ["password_hash", "$2a$10$VnMsEuxvBuXQa8eqORkJxeDLu.aRdnJARULNBnEHi7iK74SF5ZCCm"], ["password_salt", "$2a$10$VnMsEuxvBuXQa8eqORkJxe"], ["created_at", "2017-11-02 17:09:36.458211"], ["updated_at", "2017-11-02 17:09:36.458211"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 12], ["updated_at", "2017-11-02 17:09:36.459547"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 12], ["updated_at", "2017-11-02 17:09:36.460725"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 12], ["updated_at", "2017-11-02 17:09:36.461796"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 12], ["updated_at", "2017-11-02 17:09:36.462905"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jacinto_beier@quitzon.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 283735392], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Lacy Dooley"], ["email", "jacinto_beier@quitzon.org"], ["document", 283735392], ["step", 0], ["password_hash", "$2a$10$gS70dPTaR1XsNB9kWKcNKu5m1goRc/XDRUbjaJE.yTYt5LDvDSKoq"], ["password_salt", "$2a$10$gS70dPTaR1XsNB9kWKcNKu"], ["created_at", "2017-11-02 17:09:36.547227"], ["updated_at", "2017-11-02 17:09:36.547227"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 13], ["updated_at", "2017-11-02 17:09:36.548585"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 13], ["updated_at", "2017-11-02 17:09:36.549712"], ["id", 3]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 13], ["updated_at", "2017-11-02 17:09:36.550703"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 13], ["updated_at", "2017-11-02 17:09:36.551787"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "osbaldo@mohr.info"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 695665359], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Linnea Turner"], ["email", "osbaldo@mohr.info"], ["document", 695665359], ["step", 0], ["password_hash", "$2a$10$GRRHTZ3FqHy14KCnVWwX2.YZK8tWnfLjGiOwEKXAVkjzWYPeuBjWe"], ["password_salt", "$2a$10$GRRHTZ3FqHy14KCnVWwX2."], ["created_at", "2017-11-02 17:09:36.633945"], ["updated_at", "2017-11-02 17:09:36.633945"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 14], ["updated_at", "2017-11-02 17:09:36.635312"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 14], ["updated_at", "2017-11-02 17:09:36.636580"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 14], ["updated_at", "2017-11-02 17:09:36.637605"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 14], ["updated_at", "2017-11-02 17:09:36.638653"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "moriah@kling.net"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 667090669], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Modesta Turcotte"], ["email", "moriah@kling.net"], ["document", 667090669], ["step", 0], ["password_hash", "$2a$10$/axRERa1ytygOs.3S.JOXeNNss0yfQTDPjS478Lq11FF6wMETWrnW"], ["password_salt", "$2a$10$/axRERa1ytygOs.3S.JOXe"], ["created_at", "2017-11-02 17:09:36.720173"], ["updated_at", "2017-11-02 17:09:36.720173"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 15], ["updated_at", "2017-11-02 17:09:36.721548"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 15], ["updated_at", "2017-11-02 17:09:36.722766"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 15], ["updated_at", "2017-11-02 17:09:36.723876"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 15], ["updated_at", "2017-11-02 17:09:36.725027"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "nicole@wehner.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 817769773], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Beulah Moore"], ["email", "nicole@wehner.co"], ["document", 817769773], ["step", 0], ["password_hash", "$2a$10$lm2fxaEklqnF8HSBt284ieWQeQAYVIe8fCjZ.hp7M0sn960PZ6jqy"], ["password_salt", "$2a$10$lm2fxaEklqnF8HSBt284ie"], ["created_at", "2017-11-02 17:09:36.808446"], ["updated_at", "2017-11-02 17:09:36.808446"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 16], ["updated_at", "2017-11-02 17:09:36.809843"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 16], ["updated_at", "2017-11-02 17:09:36.811051"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 16], ["updated_at", "2017-11-02 17:09:36.812072"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 16], ["updated_at", "2017-11-02 17:09:36.813111"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "belle@bergnaumweinat.name"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 181594543], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Justen Ondricka"], ["email", "belle@bergnaumweinat.name"], ["document", 181594543], ["step", 0], ["password_hash", "$2a$10$6PoQZYSxeEtUQ1C5zmZX3ONdolJwzu2ofHYvWsJGmv4un08yMWQ6q"], ["password_salt", "$2a$10$6PoQZYSxeEtUQ1C5zmZX3O"], ["created_at", "2017-11-02 17:09:36.894632"], ["updated_at", "2017-11-02 17:09:36.894632"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 17], ["updated_at", "2017-11-02 17:09:36.896027"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 17], ["updated_at", "2017-11-02 17:09:36.897272"], ["id", 3]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 17], ["updated_at", "2017-11-02 17:09:36.898334"], ["id", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 17], ["updated_at", "2017-11-02 17:09:36.899426"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "domingo@zboncak.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 544986022], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dina Kilback MD"], ["email", "domingo@zboncak.org"], ["document", 544986022], ["step", 0], ["password_hash", "$2a$10$H.pDw9JkGmUkpAN0aFirxefuUrLRwQ1Z77WWE.QEKD98kSlSYXubm"], ["password_salt", "$2a$10$H.pDw9JkGmUkpAN0aFirxe"], ["created_at", "2017-11-02 17:09:36.980972"], ["updated_at", "2017-11-02 17:09:36.980972"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 18], ["updated_at", "2017-11-02 17:09:36.982370"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 18], ["updated_at", "2017-11-02 17:09:36.983584"], ["id", 3]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 18], ["updated_at", "2017-11-02 17:09:36.984708"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 18], ["updated_at", "2017-11-02 17:09:36.985806"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "meagan.casper@kohlergrimes.name"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 459214279], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Amari Pollich"], ["email", "meagan.casper@kohlergrimes.name"], ["document", 459214279], ["step", 0], ["password_hash", "$2a$10$rKAssOLxNoPyXVH2Wuz4oeALFB/st8PtAGQrZL4wR0DibfQ.b./ky"], ["password_salt", "$2a$10$rKAssOLxNoPyXVH2Wuz4oe"], ["created_at", "2017-11-02 17:09:37.067808"], ["updated_at", "2017-11-02 17:09:37.067808"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 19], ["updated_at", "2017-11-02 17:09:37.069173"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 19], ["updated_at", "2017-11-02 17:09:37.070304"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 19], ["updated_at", "2017-11-02 17:09:37.071315"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 19], ["updated_at", "2017-11-02 17:09:37.072357"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "carmelo.sporer@schultz.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 17229534], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dwight Nienow"], ["email", "carmelo.sporer@schultz.co"], ["document", 17229534], ["step", 0], ["password_hash", "$2a$10$RfSmsfR.5NpOlm3K3D8jrutDmckeECjxxrWN9docw.APYqAivU5pu"], ["password_salt", "$2a$10$RfSmsfR.5NpOlm3K3D8jru"], ["created_at", "2017-11-02 17:09:37.153587"], ["updated_at", "2017-11-02 17:09:37.153587"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 20], ["updated_at", "2017-11-02 17:09:37.154993"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 20], ["updated_at", "2017-11-02 17:09:37.156180"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 20], ["updated_at", "2017-11-02 17:09:37.157251"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 20], ["updated_at", "2017-11-02 17:09:37.158383"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "christ@auer.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 187823041], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ciara Morissette"], ["email", "christ@auer.org"], ["document", 187823041], ["step", 0], ["password_hash", "$2a$10$NmobrSPwYKCyA0sRyM5PpOtsgHJ/4e5ialxVGLb3b4YeI2SJqK5Ay"], ["password_salt", "$2a$10$NmobrSPwYKCyA0sRyM5PpO"], ["created_at", "2017-11-02 17:09:37.239471"], ["updated_at", "2017-11-02 17:09:37.239471"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 21], ["updated_at", "2017-11-02 17:09:37.240963"], ["id", 2]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 21], ["updated_at", "2017-11-02 17:09:37.242496"], ["id", 3]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 21], ["updated_at", "2017-11-02 17:09:37.243854"], ["id", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 21], ["updated_at", "2017-11-02 17:09:37.245314"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "buddy_aufderhar@king.io"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 706089999], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jeremy Krajcik"], ["email", "buddy_aufderhar@king.io"], ["document", 706089999], ["step", 0], ["password_hash", "$2a$10$KanSx7BpBs6Zo2YcNx7TB.Ju1/IfMBsyBhxKgVDPrv0UBuWOea7da"], ["password_salt", "$2a$10$KanSx7BpBs6Zo2YcNx7TB."], ["created_at", "2017-11-02 17:09:37.327417"], ["updated_at", "2017-11-02 17:09:37.327417"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 22], ["updated_at", "2017-11-02 17:09:37.328857"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 22], ["updated_at", "2017-11-02 17:09:37.330112"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 22], ["updated_at", "2017-11-02 17:09:37.331232"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 22], ["updated_at", "2017-11-02 17:09:37.332297"], ["id", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "brando.bartell@zboncakcain.io"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 794825666], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ardella Labadie"], ["email", "brando.bartell@zboncakcain.io"], ["document", 794825666], ["step", 0], ["password_hash", "$2a$10$h5AigDIPNj4Gp/7l4AdOwuJCtMI/jRW/P1sH7l62s.GXrITrb2caq"], ["password_salt", "$2a$10$h5AigDIPNj4Gp/7l4AdOwu"], ["created_at", "2017-11-02 17:09:37.413863"], ["updated_at", "2017-11-02 17:09:37.413863"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "departaments" SET "user_id" = ?, "updated_at" = ? WHERE "departaments"."id" = ?[0m  [["user_id", 23], ["updated_at", "2017-11-02 17:09:37.415269"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "roles" SET "user_id" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["user_id", 23], ["updated_at", "2017-11-02 17:09:37.416631"], ["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "charges" SET "user_id" = ?, "updated_at" = ? WHERE "charges"."id" = ?[0m  [["user_id", 23], ["updated_at", "2017-11-02 17:09:37.417781"], ["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "areas" SET "user_id" = ?, "updated_at" = ? WHERE "areas"."id" = ?[0m  [["user_id", 23], ["updated_at", "2017-11-02 17:09:37.418895"], ["id", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102164352"]]
+  [1m[35m (209.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2017-11-02 17:09:37.642348"], ["updated_at", "2017-11-02 17:09:37.642348"]]
+  [1m[35m (191.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_areas_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_areas_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_charges_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_charges_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_departaments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_departaments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+[0m
