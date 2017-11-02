@@ -1886,3 +1886,245 @@ Processing by HomeController#evaluator as HTML
 Completed 200 OK in 49ms (Views: 45.5ms | ActiveRecord: 0.5ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (238.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (184.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171031112157)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "document" integer, "idRol" integer, "idPosition" integer, "idDepartament" integer, "idArea" integer, "idBoss" integer, "step" integer, "password_hash" varchar, "password_salt" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031112157"]]
+  [1m[35m (211.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddingUsers (20171031114458)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jgranadosmendez@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "idRol", "idPosition", "idDepartament", "idArea", "idBoss", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jonathan Granados"], ["email", "jgranadosmendez@gmail.com"], ["document", 1032459412], ["idRol", 1], ["idPosition", 1], ["idDepartament", 1], ["idArea", 1], ["idBoss", -1], ["step", 0], ["password_hash", "$2a$10$rOOx7Rk0nK9ZmW5xN93qFOEO0QY6Q5l6OYrRj8c86PbM3vnCOxQ6m"], ["password_salt", "$2a$10$rOOx7Rk0nK9ZmW5xN93qFO"], ["created_at", "2017-11-01 22:54:20.224778"], ["updated_at", "2017-11-01 22:54:20.224778"]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1234], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "idRol", "idPosition", "idDepartament", "idArea", "idBoss", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Test1"], ["email", "test1@gmail.com"], ["document", 1234], ["idRol", 1], ["idPosition", 1], ["idDepartament", 1], ["idArea", 1], ["idBoss", -1], ["step", 0], ["password_hash", "$2a$10$vUJeC3kgdEQ.9AZmkOyciuvnyx.BpKs4b5SXjpLMf3Q2dT4HAtPxW"], ["password_salt", "$2a$10$vUJeC3kgdEQ.9AZmkOyciu"], ["created_at", "2017-11-01 22:54:20.306964"], ["updated_at", "2017-11-01 22:54:20.306964"]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 5678], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "idRol", "idPosition", "idDepartament", "idArea", "idBoss", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Test2"], ["email", "test2@gmail.com"], ["document", 5678], ["idRol", 1], ["idPosition", 1], ["idDepartament", 1], ["idArea", 1], ["idBoss", -1], ["step", 0], ["password_hash", "$2a$10$vAwODqzBziOMr3u4xIGZee0/pv6H/fctMLN463xEM317Q/oyuHdEC"], ["password_salt", "$2a$10$vAwODqzBziOMr3u4xIGZee"], ["created_at", "2017-11-01 22:54:20.385924"], ["updated_at", "2017-11-01 22:54:20.385924"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031114458"]]
+  [1m[35m (139.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-01 22:54:20.541264"], ["updated_at", "2017-11-01 22:54:20.541264"]]
+  [1m[35m (159.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDepartaments (20171101225509)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "departaments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171101225509"]]
+  [1m[35m (134.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (187.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (191.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171031112157)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "document" integer, "idRol" integer, "idPosition" integer, "idDepartament" integer, "idArea" integer, "idBoss" integer, "step" integer, "password_hash" varchar, "password_salt" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031112157"]]
+  [1m[35m (164.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddingUsers (20171031114458)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jgranadosmendez@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "idRol", "idPosition", "idDepartament", "idArea", "idBoss", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jonathan Granados"], ["email", "jgranadosmendez@gmail.com"], ["document", 1032459412], ["idRol", 1], ["idPosition", 1], ["idDepartament", 1], ["idArea", 1], ["idBoss", -1], ["step", 0], ["password_hash", "$2a$10$MXFPhdEkccbP0m4JCmAtzuHxpYn4v/xL7IvOxYTfSOvOFJWdW4/ZW"], ["password_salt", "$2a$10$MXFPhdEkccbP0m4JCmAtzu"], ["created_at", "2017-11-01 22:58:53.356315"], ["updated_at", "2017-11-01 22:58:53.356315"]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1234], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "idRol", "idPosition", "idDepartament", "idArea", "idBoss", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Test1"], ["email", "test1@gmail.com"], ["document", 1234], ["idRol", 1], ["idPosition", 1], ["idDepartament", 1], ["idArea", 1], ["idBoss", -1], ["step", 0], ["password_hash", "$2a$10$moEvGsSINqUi0lm4jl8BS.Sdsek5wOzcbt0sSeWgzf1eYeZo243sO"], ["password_salt", "$2a$10$moEvGsSINqUi0lm4jl8BS."], ["created_at", "2017-11-01 22:58:53.439191"], ["updated_at", "2017-11-01 22:58:53.439191"]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 5678], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "idRol", "idPosition", "idDepartament", "idArea", "idBoss", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Test2"], ["email", "test2@gmail.com"], ["document", 5678], ["idRol", 1], ["idPosition", 1], ["idDepartament", 1], ["idArea", 1], ["idBoss", -1], ["step", 0], ["password_hash", "$2a$10$7JWnvDc7DzmHK1SYNM04Ye8q/F3fjiI53kuJvmte6izP1NCSrehzK"], ["password_salt", "$2a$10$7JWnvDc7DzmHK1SYNM04Ye"], ["created_at", "2017-11-01 22:58:53.518622"], ["updated_at", "2017-11-01 22:58:53.518622"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031114458"]]
+  [1m[35m (143.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDepartaments (20171101225509)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "departaments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171101225509"]]
+  [1m[35m (210.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-01 22:58:53.894714"], ["updated_at", "2017-11-01 22:58:53.894714"]]
+  [1m[35m (145.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (172.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (155.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171031112157)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "document" integer, "idRol" integer, "idPosition" integer, "idDepartament" integer, "idArea" integer, "idBoss" integer, "step" integer, "password_hash" varchar, "password_salt" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031112157"]]
+  [1m[35m (230.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddingUsers (20171031114458)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jgranadosmendez@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "idRol", "idPosition", "idDepartament", "idArea", "idBoss", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jonathan Granados"], ["email", "jgranadosmendez@gmail.com"], ["document", 1032459412], ["idRol", 1], ["idPosition", 1], ["idDepartament", 1], ["idArea", 1], ["idBoss", -1], ["step", 0], ["password_hash", "$2a$10$T5BBryUlC8TOdeTYhGF.1.Q/.FWKepxS0cWZg8sL4tZZa6vPxxxJO"], ["password_salt", "$2a$10$T5BBryUlC8TOdeTYhGF.1."], ["created_at", "2017-11-01 22:59:43.663811"], ["updated_at", "2017-11-01 22:59:43.663811"]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1234], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "idRol", "idPosition", "idDepartament", "idArea", "idBoss", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Test1"], ["email", "test1@gmail.com"], ["document", 1234], ["idRol", 1], ["idPosition", 1], ["idDepartament", 1], ["idArea", 1], ["idBoss", -1], ["step", 0], ["password_hash", "$2a$10$P84veCff4CO16G1o9/q1H.q93JJOs1DWWKORmLVCTxSG5s35uwDGO"], ["password_salt", "$2a$10$P84veCff4CO16G1o9/q1H."], ["created_at", "2017-11-01 22:59:43.746505"], ["updated_at", "2017-11-01 22:59:43.746505"]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 5678], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "idRol", "idPosition", "idDepartament", "idArea", "idBoss", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Test2"], ["email", "test2@gmail.com"], ["document", 5678], ["idRol", 1], ["idPosition", 1], ["idDepartament", 1], ["idArea", 1], ["idBoss", -1], ["step", 0], ["password_hash", "$2a$10$jjtMqkDBLEBLVf6.aOBdseItuiKurbBuPwVg6SldmB1iKkDmSTmWS"], ["password_salt", "$2a$10$jjtMqkDBLEBLVf6.aOBdse"], ["created_at", "2017-11-01 22:59:43.826027"], ["updated_at", "2017-11-01 22:59:43.826027"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031114458"]]
+  [1m[35m (125.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDepartaments (20171101225509)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "departaments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171101225509"]]
+  [1m[35m (152.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-01 22:59:44.119925"], ["updated_at", "2017-11-01 22:59:44.119925"]]
+  [1m[35m (73.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (292.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (184.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171031112157)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "document" integer, "step" integer, "password_hash" varchar, "password_salt" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031112157"]]
+  [1m[35m (227.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddingUsers (20171031114458)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jgranadosmendez@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jonathan Granados"], ["email", "jgranadosmendez@gmail.com"], ["document", 1032459412], ["step", 0], ["password_hash", "$2a$10$bSOyYsUqmn8Qa2RYbzbxE.M4lCPA5ds49bQz9mNemkWuDWPnzIXfq"], ["password_salt", "$2a$10$bSOyYsUqmn8Qa2RYbzbxE."], ["created_at", "2017-11-01 23:49:08.361372"], ["updated_at", "2017-11-01 23:49:08.361372"]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1234], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Test1"], ["email", "test1@gmail.com"], ["document", 1234], ["step", 0], ["password_hash", "$2a$10$2vBJsFlnG2GnocrMvGY/Fu7H.B0388wKjQSKELJidRgK94skNndjy"], ["password_salt", "$2a$10$2vBJsFlnG2GnocrMvGY/Fu"], ["created_at", "2017-11-01 23:49:08.444166"], ["updated_at", "2017-11-01 23:49:08.444166"]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 5678], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Test2"], ["email", "test2@gmail.com"], ["document", 5678], ["step", 0], ["password_hash", "$2a$10$h2UlB220u11i2iSQmooMiO49tAf.NvlMOSiUmzZHjQVEY0JLPiQ3y"], ["password_salt", "$2a$10$h2UlB220u11i2iSQmooMiO"], ["created_at", "2017-11-01 23:49:08.523086"], ["updated_at", "2017-11-01 23:49:08.523086"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031114458"]]
+  [1m[35m (143.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDepartaments (20171101225509)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "departaments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171101225509"]]
+  [1m[35m (232.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-01 23:49:08.917952"], ["updated_at", "2017-11-01 23:49:08.917952"]]
+  [1m[35m (138.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mDepartament Load (0.3ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (1.2ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.5ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.9ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.5ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (1.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.5ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (251.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (273.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171031112157)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "document" integer, "step" integer, "password_hash" varchar, "password_salt" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031112157"]]
+  [1m[35m (307.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddingUsers (20171031114458)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jgranadosmendez@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jonathan Granados"], ["email", "jgranadosmendez@gmail.com"], ["document", 1032459412], ["step", 0], ["password_hash", "$2a$10$iMurzn1vl9Xf1aASOomwd.1d38IwI0Y36BsICrMSxSTYDIKt2.EJa"], ["password_salt", "$2a$10$iMurzn1vl9Xf1aASOomwd."], ["created_at", "2017-11-02 00:08:00.890145"], ["updated_at", "2017-11-02 00:08:00.890145"]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1234], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Test1"], ["email", "test1@gmail.com"], ["document", 1234], ["step", 0], ["password_hash", "$2a$10$wAhhRU9oZ2gjPPFYgFUn6.bHSTzIj0mWXeAQi.kmvLRiD.fn3EKIq"], ["password_salt", "$2a$10$wAhhRU9oZ2gjPPFYgFUn6."], ["created_at", "2017-11-02 00:08:00.972954"], ["updated_at", "2017-11-02 00:08:00.972954"]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 5678], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Test2"], ["email", "test2@gmail.com"], ["document", 5678], ["step", 0], ["password_hash", "$2a$10$um5UeRgpSC6u709ZUvyJ8.rimoONvI.ZYKiZXpaIhso.FZQNgpOOy"], ["password_salt", "$2a$10$um5UeRgpSC6u709ZUvyJ8."], ["created_at", "2017-11-02 00:08:01.052061"], ["updated_at", "2017-11-02 00:08:01.052061"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031114458"]]
+  [1m[35m (60.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDepartaments (20171101225509)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "departaments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171101225509"]]
+  [1m[35m (234.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-02 00:08:01.365978"], ["updated_at", "2017-11-02 00:08:01.365978"]]
+  [1m[35m (226.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mDepartament Load (0.5ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (182.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (218.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171031112157)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "document" integer, "step" integer, "password_hash" varchar, "password_salt" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031112157"]]
+  [1m[35m (156.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddingUsers (20171031114458)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jgranadosmendez@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jonathan Granados"], ["email", "jgranadosmendez@gmail.com"], ["document", 1032459412], ["step", 0], ["password_hash", "$2a$10$wfw4.UHShLfWegBqG4MT5eOsRUM.o27irzOaDWoLRCoHrwrrsarm."], ["password_salt", "$2a$10$wfw4.UHShLfWegBqG4MT5e"], ["created_at", "2017-11-02 15:36:23.070641"], ["updated_at", "2017-11-02 15:36:23.070641"]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1234], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Test1"], ["email", "test1@gmail.com"], ["document", 1234], ["step", 0], ["password_hash", "$2a$10$lnUTEsGWmOGIdBy5mOPtxuqMOFgcDoifMj1bVT0etCygPAJ.BznKC"], ["password_salt", "$2a$10$lnUTEsGWmOGIdBy5mOPtxu"], ["created_at", "2017-11-02 15:36:23.152430"], ["updated_at", "2017-11-02 15:36:23.152430"]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 5678], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Test2"], ["email", "test2@gmail.com"], ["document", 5678], ["step", 0], ["password_hash", "$2a$10$fap4/1Fj.RYnK3Wrt1B2fOmGYImfmWBg2KpVnpCwhcT1Ll7LZPxB6"], ["password_salt", "$2a$10$fap4/1Fj.RYnK3Wrt1B2fO"], ["created_at", "2017-11-02 15:36:23.232158"], ["updated_at", "2017-11-02 15:36:23.232158"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031114458"]]
+  [1m[35m (158.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-02 15:36:23.400928"], ["updated_at", "2017-11-02 15:36:23.400928"]]
+  [1m[35m (155.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m

@@ -8,6 +8,8 @@ class User < ApplicationRecord
   validates_presence_of :email, :document
   validates_uniqueness_of :email, :document
 
+  has_one :departament
+
   def getBosses
     User.all
   end
