@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_one :charge
   has_one :area
   has_one :boss, :class_name => 'User'
+  #belongs_to :boss, :class_name => 'User'
 
   def getBosses
     User.all
