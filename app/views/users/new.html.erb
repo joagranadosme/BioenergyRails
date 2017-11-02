@@ -1,56 +1,89 @@
-<h1>Sign Up</h1>
-<div>
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%= stylesheet_link_tag "application" %>
+  </head>
+
+  <body>
+    <div class="container margin-top">
+      <h1 class="myh_center">Sign Up</h1>
+      <div class="row row-eq-height">
+        <div class="col-md-offset-1 col-md-4">
+          
+          <%= form_for @user do |f| %>
+            <% if @user.errors.any? %>
+              <div class="error_messages">
+                <h2>Form is invalid</h2>
+                <ul>
+                  <% for message in @user.errors.full_messages %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            
+            <p>
+              <%= f.label :name %><br />
+              <%= f.text_field :name, class:"form" %>
+            </p>
+            
+            <p>
+              <%= f.label :email %><br />
+              <%= f.text_field :email, class:"form" %>
+            </p>
+            
+            <p>
+              <%= f.label :document %><br />
+              <%= f.number_field :document, class:"form" %>
+            </p>
+            
+            <p>
+              <%= f.label :idRol %><br />
+              <%= f.number_field :idRol, class:"form" %>
+            </p>
+            
+            <p>
+              <%= f.label :idPosition %><br />
+              <%= f.number_field :idPosition, class:"form" %>
+            </p>
+        
+            <p>
+              <%= f.label :idDepartament %><br />
+              <%= f.number_field :idDepartament, class:"form" %>
+            </p>
+            
+            <p>
+              <%= f.label :idArea %><br />
+              <%= f.number_field :idArea, class:"form" %>
+            </p>
+        
+            <%= f.hidden_field :idBoss, :value => -1 %>
+            <%= f.hidden_field :step, :value => -1 %>
+        
+            <p>
+              <%= f.label :password %><br />
+              <%= f.password_field :password, class:"form"  %>
+            </p>
+            
+            <p>
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, class:"form"  %>
+            </p>
+            
+            <%= f.submit url:"#", class:"btn-full btn" %>
+          <% end %>
+        </div>
+        <div class="col-md-offset-1 col-md-5 verticalAlign">
+          <%= image_tag "image1.jpg", alt: "", style:"height: 80%; width:80%", class:"" %>
+        </div>
+      </div>
     </div>
-  <% end %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :document %><br />
-    <%= f.number_field :document %>
-  </p>
-  <p>
-    <%= f.label :idRol %><br />
-    <%= f.number_field :idRol %>
-  </p>
-  <p>
-    <%= f.label :idPosition %><br />
-    <%= f.number_field :idPosition %>
-  </p>
-  <p>
-    <%= f.label :idDepartament %><br />
-    <%= f.number_field :idDepartament %>
-  </p>
-  <p>
-    <%= f.label :idArea %><br />
-    <%= f.number_field :idArea %>
-  </p>
+  </body>
+</html>
+    
 
-  <%= f.hidden_field :idBoss, :value => -1 %>
-  <%= f.hidden_field :step, :value => -1 %>
-
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
-  <p class="button"><%= f.submit %></p>
-<% end %>
-</div>

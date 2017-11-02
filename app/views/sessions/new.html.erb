@@ -1,13 +1,63 @@
-<h1>Log in</h1>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%= stylesheet_link_tag "application" %>
+  </head>
 
-<%= form_tag sessions_path do %>
-  <p>
-    <%= label_tag :document %><br />
-    <%= text_field_tag :document, params[:document] %>
-  </p>
-  <p>
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </p>
-  <p class="button"><%= submit_tag "Log in" %></p>
-<% end %>
+  <body>
+    <div class="container margin-top">
+      <div class="row">
+        <div class="col-xs-offset-4 col-xs-4">
+          <div class="panel panel-default">
+            
+            <div class="panel-heading" style="">
+               <%= image_tag "Titulo.png", alt: "", style:"height: 80%; width:80%", class:"" %>
+            </div>
+            
+            <%= form_tag sessions_path do %>
+            
+               <% flash.each do |name, msg| %>
+                <div class="alert alert-danger alert-dismissable">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+                </div>
+              <% end %>
+              
+              <div class="panel-body" style="">
+                <div class="container-fluid">
+                  <p>
+                    <%= label_tag :document %><br />
+                    <%= text_field_tag :document, params[:document], class:"form" %>
+                  </p>
+                  <p>
+                    <%= label_tag :password %><br />
+                    <%= password_field_tag :password, nil,class:"form" %>
+                  </p>
+                </div>
+                <%= submit_tag "Log in", class:"btn", style:"float: right" %>
+              </div>
+              
+              <div class="panel-footer">
+                <div id="user_nav" class="container-fluid">
+                  <% if current_user %>
+                    Logged in as <%= current_user.email %>.
+                    <%= link_to "Log out", log_out_path %>
+                  <% else %>
+                    <p>¿Aun no tienes una cuenta?</p>
+                    <%= link_to "Sign Up", sign_up_path, class:"btn-ghost", style:"" %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+    
