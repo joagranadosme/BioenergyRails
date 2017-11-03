@@ -11,14 +11,20 @@
 
   <body>
     <div class="container margin-top">
-      
-      <h3><%= link_to "Evaluated", evaluated_path, class:"myh-link" %> <span style="color: rgb( 92, 148, 74);"> >> Step 1<!--%= @step %--> </span></h3>
-      <h1 class="myh">Escoge a tu jefe</h1>
-      
+
+      <h3><%= link_to "Ser evaluado", evaluated_path, class:"myh-link" %><span style="color: rgb( 92, 148, 74);"> >> Paso 1</span></h3>
+      <h5 class="myh">Escoge a tu jefe</h5>
+
       <br>
-      <h5>Chachara</h5>
+      <p>
+        A continuación encontrará una lista desplegable de los trabajadores de Bioenergy, que tienen personal a cargo.<br><br>
+
+        Por favor tenga en cuenta que la persona que usted seleccione, ha debido estar direccionando su trabajo, retroalimentándolo y/o apoyándolo en la solución de problemas u obstaculos que se le puedan presentar dentro del desarrollo diario de sus actividades en el cargo que usted evaluará, durante el 2017.<br><br>
+
+        Con la persona que usted vaya a seleccionar, deberá acordar y calificar los objetivos individuales, que usted fijará para evaluar su desempeño en el año 2017.<br><br>
+      </p>
       <br>
-      
+
       <div style="row">
         <div class="col-md-4">
           <% if @bosses.nil? %>
@@ -30,15 +36,15 @@
               <% end %>
             </select>
           <% end %>
-        </div>  
+        </div>
       </div>
-      
 
-      
+
+
       <div style="row">
         <div class="col-md-offset-8 col-md-4">
           <h4>
-            <%= link_to "Step 2", evaluated_step_two_path, class:"btn" %>
+            <%= link_to "Paso 2", evaluated_step_two_path, class:"btn" %>
           </h4>
         </div>
       </div>
@@ -46,7 +52,3 @@
     </div>
   </body>
 </html>
-    
-
-
-

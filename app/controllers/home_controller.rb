@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 
     def index
+      @user = current_user
       @role = current_user.role
     end
 
