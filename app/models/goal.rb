@@ -20,4 +20,11 @@ class Goal < ApplicationRecord
 
   belongs_to :user
 
+  validates_presence_of :perspective, :description, :generalIndicator,
+   :specificIndicator, :formula, :weight, :typeGoal, :measure
+
+  def self.get_goals_from_user(user)
+    Goal.where(user_id: user.id)
+  end
+
 end

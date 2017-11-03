@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20171103045642) do
     t.string "specificIndicator"
     t.string "formula"
     t.integer "weight"
-    t.integer "type"
+    t.integer "typeGoal"
     t.integer "measure"
     t.integer "user_id"
     t.datetime "created_at", null: false

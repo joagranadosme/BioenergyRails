@@ -7,7 +7,7 @@ class CreateGoals < ActiveRecord::Migration[5.1]
       t.string :specificIndicator
       t.string :formula
       t.integer :weight
-      t.integer :type
+      t.integer :typeGoal
       t.integer :measure
 
       t.references :user, foreign_key: true

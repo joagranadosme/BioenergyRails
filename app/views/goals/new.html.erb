@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%= stylesheet_link_tag "application" %>
+  </head>
+
+  <body>
+    <div class="container margin-top">
+      <%= form_for @goal do |g| %>
+
+        <% if @goal.errors.any? %>
+          <div class="error_messages">
+            <div class="alert alert-danger alert-dismissable">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+              <strong>Form is invalid</strong>
+              <ul>
+                <% for message in @goal.errors.full_messages %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+
+        <%= g.label "Descripción" %><br />
+        <%= g.text_field :description, class:"form" %>
+
+        <%= g.label "Perspectiva" %><br />
+        <%= g.text_field :perspective, class:"form" %>
+
+        <%= g.label "Indicador general" %><br />
+        <%= g.text_field :generalIndicator, class:"form" %>
+
+        <%= g.label "Indicador específico" %><br />
+        <%= g.text_field :specificIndicator, class:"form" %>
+
+        <%= g.label "Formula" %><br />
+        <%= g.text_field :formula, class:"form" %>
+
+        <%= g.label "Peso" %><br />
+        <%= g.number_field :weight, class:"form"%>
+
+        <%= g.label "Unidad de medida" %><br />
+        <%= g.number_field :measure, class:"form" %>
+
+        <%= g.hidden_field :typeGoal, :value => 0 %>
+        <%= g.hidden_field :user_id, :value => current_user.id %>
+
+        <%= submit_tag("Crear objetivo") %>
+      <% end %>
+
+    </div>
+
+  </body>
+</html>

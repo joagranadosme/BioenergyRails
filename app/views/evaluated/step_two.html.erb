@@ -19,9 +19,24 @@
       <h5>Chachara</h5>
       <br>
 
+      <% counter = 0 %>
+      <% if @goals == [] %>
+        <p>No tienes objetivos</p>
+      <% else %>
+        <% @goals.each do |g| %>
+          <p><%= g.perspective %></p><br>
+          <p><%= g.weight %></p><br>
+          <% counter += g.weight %>
+        <% end %>
+        <br>
+      <% end %>
+
+      <p><%= counter %></p>
+
       <div style="row">
         <div class="col-md-offset-8 col-md-4">
           <h4>
+            <%= link_to "Crear", new_goal_path, class:"btn" %>
             <%= link_to "Paso 3", evaluated_step_three_path, class:"btn" %>
           </h4>
         </div>
