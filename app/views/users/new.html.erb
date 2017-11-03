@@ -11,19 +11,22 @@
 
   <body>
     <div class="container margin-top">
-      <h1 class="myh_center">Sign Up</h1>
+      <h1 class="myh-center">Sign Up</h1>
       <div class="row row-eq-height">
         <div class="col-md-offset-1 col-md-4">
           
           <%= form_for @user do |f| %>
             <% if @user.errors.any? %>
               <div class="error_messages">
-                <h2>Form is invalid</h2>
-                <ul>
-                  <% for message in @user.errors.full_messages %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
+                <div class="alert alert-danger alert-dismissable">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                  <strong>Form is invalid</strong>
+                  <ul>
+                    <% for message in @user.errors.full_messages %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
               </div>
             <% end %>
             
@@ -43,26 +46,22 @@
             </p>
             
             <p>
-              <%= f.label :idRol %><br />
-              <%= f.number_field :idRol, class:"form" %>
+              <%= f.label :role %><br />
+              <%= f.number_field :role, class:"form" %>
             </p>
             
             <p>
-              <%= f.label :idPosition %><br />
-              <%= f.number_field :idPosition, class:"form" %>
+              <%= f.label :charge %><br />
+              <%= f.number_field :charge, class:"form" %>
             </p>
         
-            <p>
-              <%= f.label :idDepartament %><br />
-              <%= f.number_field :idDepartament, class:"form" %>
-            </p>
             
             <p>
-              <%= f.label :idArea %><br />
-              <%= f.number_field :idArea, class:"form" %>
+              <%= f.label :area %><br />
+              <%= f.number_field :area, class:"form" %>
             </p>
         
-            <%= f.hidden_field :idBoss, :value => -1 %>
+            <!--%= f.hidden_field :idBoss, :value => -1 %-->
             <%= f.hidden_field :step, :value => -1 %>
         
             <p>
@@ -79,7 +78,7 @@
           <% end %>
         </div>
         <div class="col-md-offset-1 col-md-5 verticalAlign">
-          <%= image_tag "image1.jpg", alt: "", style:"height: 80%; width:80%", class:"" %>
+          <%= image_tag "image1.jpg", alt: "", style:"width:80%", class:"" %>
         </div>
       </div>
     </div>

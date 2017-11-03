@@ -1,12 +1,52 @@
-<h1>Escoge a tu jefe</h1>
-<p>Chachara</p>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%= stylesheet_link_tag "application" %>
+  </head>
 
-<ul>
-  <% if @bosses.nil? %>
-  <li>No hay jefes para seleccionar</li>
-  <% else %>
-    <% @bosses.each do |b| %>
-      <li><%= b.name %></li>
-    <% end %>
-  <% end %>
-</ul>
+  <body>
+    <div class="container margin-top">
+      
+      <h3><%= link_to "Evaluated", evaluated_path, class:"myh-link" %> <span style="color: rgb( 92, 148, 74);"> >> Step 1<!--%= @step %--> </span></h3>
+      <h1 class="myh">Escoge a tu jefe</h1>
+      
+      <br>
+      <h5>Chachara</h5>
+      <br>
+      
+      <div style="row">
+        <div class="col-md-4">
+          <% if @bosses.nil? %>
+            <h5>No hay jefes para seleccionar</h5>
+          <% else %>
+            <select class="btn btn-full">
+              <% @bosses.each do |b| %>
+                <option value=<%= b.name %>><h5 class="opacity"><%= b.name %></h5></option>
+              <% end %>
+            </select>
+          <% end %>
+        </div>  
+      </div>
+      
+
+      
+      <div style="row">
+        <div class="col-md-offset-8 col-md-4">
+          <h4>
+            <%= link_to "Step 2", evaluated_step_two_path, class:"btn" %>
+          </h4>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
+    
+
+
+

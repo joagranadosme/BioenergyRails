@@ -1,10 +1,32 @@
-<h1>Evaluated</h1>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%= stylesheet_link_tag "application" %>
+  </head>
 
-<p>More chachara</p>
+  <body>
+    <div class="container margin-top">
+        
+        <h1> <%= link_to "Evaluated", evaluated_path, class:"myh-link" %> </h1>
+        
+        <br>
+        <h5>More chachara</h5>
+        <br>
 
-<h2><%= @step %></h2>
-
-<h4><%= link_to "Paso 1", evaluated_step_one_path %></h4>
-<h4><%= link_to "Paso 2", evaluated_step_two_path %></h4>
-<h4><%= link_to "Paso 3", evaluated_step_three_path %></h4>
-<h4><%= link_to "Paso 4", evaluated_step_four_path %></h4>
+        <div style="row">
+            <div class="col-xs-offset-8 col-xs-4">
+                <h4>
+                    <%= link_to "Step 1", evaluated_step_one_path, class:"btn" %>
+                </h4>
+            </div>
+        </div>
+        
+    </div>
+  </body>
+</html>
+    

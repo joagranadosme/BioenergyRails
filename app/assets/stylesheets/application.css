@@ -19,10 +19,21 @@ General
 ================================================== */
 .margin-top{ margin-top: 100px; }
 
-.myh_center{
+.myh{
+  color: rgb( 92, 148, 74);
+}
+.myh-link{
+  color: rgb( 92, 148, 74);
+  text-decoration: none;
+}
+.myh-link:hover{
+  color: rgb( 178, 210, 53);
+  text-decoration: none;
+}
+.myh-center{
     text-align: center;
 }
- 
+
 .verticalAlign{
     display: flex;
 	align-items: center;
@@ -30,6 +41,12 @@ General
 	justify-content: center;
 	vertical-align: middle;
 }
+
+.opacity:hover {
+	opacity: 0.5;
+	filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
 /* ==================================================
 Botones
 ================================================== */
@@ -37,7 +54,7 @@ Botones
   width: 98%;
 } 
 .btn {
-  background-color: rgb(118, 195, 19);
+  background-color: rgb( 92, 148, 74);
   border-radius: 4px;
   margin: 5px;
   padding: 10px 20px;
@@ -45,23 +62,23 @@ Botones
   font-weight: 800;*/
   color: #fff;
 }
-.btn:hover {
-  background-color: #fff;
-  border: 1px solid rgb(118, 195, 19); 
-  color: rgb(118, 195, 19);
+.btn:hover, .btn:focus, .btn:active {
+  background-color: #fff !important;
+  border: 1px solid rgb( 92, 148, 74) !important; 
+  color: rgb( 92, 148, 74) !important;
 }
 .btn-ghost {
   background-color: transparent;
-  border: 1px solid rgb(118, 195, 19); 
+  border: 1px solid rgb( 92, 148, 74); 
   border-radius: 4px;
   margin: 5px;
   padding: 2px 5px;
   /*font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 800;*/
-  color: rgb(118, 195, 19);
+  color: rgb( 92, 148, 74);
 }
 .btn-ghost:hover {
-  background-color: rgb(118, 195, 19);
+  background-color: rgb( 92, 148, 74);
   color: #fff;
   text-decoration: none;
 }
@@ -74,10 +91,11 @@ Panel
 
 }
 .panel-heading{
-background-color: rgb(118, 195, 19) !important;
-margin: 0 !important;
+  background-color: #fff !important;
+  margin: 0 !important;
 }
 .panel-footer{
+  border: 0;
   background-color: #fff;
   text-align: center;
   
@@ -100,8 +118,10 @@ Nav-Bar
 .navbar-default {
     background-color: rgb(250, 250, 250);
     border-bottom: 1px solid rgba(220, 220, 220, 1);
-    padding: 0px 48px;
-    min-height: 70px;
+    padding: 8px 48px;
+    min-height: 75px;
+    vertical-align: middle;
+    display: inline-block;
 }
 #logo-bioenergy{
   height: inherit;
@@ -109,8 +129,6 @@ Nav-Bar
   padding: 0;
 }
 .navbar-default .navbar-collapse {
-    background-color: #1c5664;
-    border-color: #1c5664;
     margin: 0;
     padding: 0;
 }
@@ -119,7 +137,7 @@ Nav-Bar
 .navbar-default .navbar-nav > li > a {
     vertical-align:middle;
     display: inline-block;
-    color: #f9fafb;
+    color: rgb( 92, 148, 74);
     font-size: 15px;
 }
 .navbar-dropdown{
@@ -138,6 +156,50 @@ Nav-Bar
     color: #f9fafb;
     background-color: #fff;
 }
+
+/* ==================================================
+Drop-Down
+================================================== */ 
+.dropbtn {
+    background-color: rgb( 92, 148, 74);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
 
 /* ==================================================
   grid

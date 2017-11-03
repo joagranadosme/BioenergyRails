@@ -1,22 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
-    <title>App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%= stylesheet_link_tag "application" %>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
   
+  </head>
 
   <body>
     <nav id="navbar-menu" class="navbar navbar-default navbar-static-top navbar-fixed-top">
       <div class="container-fluid">
+        
         <div class="navbar-header">
-          <%= link_to image_tag("Titulo.png", alt: "BIOENERGY", id:"logo-bioenergy"), :root, class:"navbar-brand" %>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <% if current_user %>
+            <%= link_to image_tag("Titulo.png", alt: "BIOENERGY", id:"logo-bioenergy"), index_path, class:"navbar-brand" %>
+          <% else %>
+            <%= link_to image_tag("Titulo.png", alt: "BIOENERGY", id:"logo-bioenergy"), :root, class:"navbar-brand" %>
+          <% end %>
           <!--%= image_tag "Titulo.png", alt: "", style:"height: 80%; width:80%", class:"" %-->
         </div>
+        
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+              <li><%= link_to nil do %><%= current_user.name %><% end %></li>
+              <li><%= link_to log_out_path do %><i class="glyphicon glyphicon-log-out"></i><% end %></li>
+            <% end %>
+          </ul>
+        </div>
+        
       </div>
     </nav>
   

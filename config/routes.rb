@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   get "evaluated_three" => "evaluated#step_three", :as => "evaluated_step_three"
   get "evaluated_four" => "evaluated#step_four", :as => "evaluated_step_four"
 
-  get "evaluator" => "home#evaluator"
-  get "evaluated" => "home#evaluated"
+  get "evaluator" => "home#evaluator", :as => "evaluator"
+  get "evaluated" => "home#evaluated", :as => "evaluated"
   get "index" => "home#index"
 
   resources :users

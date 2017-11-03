@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%= stylesheet_link_tag "application" %>
+  </head>
+
+  <body>
+    <div class="container margin-top">
+      
+      <h1><%= link_to "Evaluated", evaluated_path, class:"myh-link" %> <span style="color: rgb( 92, 148, 74);"> >> Step 4 <!--%= @step %--> </span> </h1>
+      <h1 class="myh">Titulo</h1>
+      
+      <br>
+      <h5>Chachara</h5>
+      <br>
+      
+      <div style="row">
+        <div class="col-xs-offset-8 col-xs-4">
+          <h4>
+            <%= link_to "Finish", nil, class:"btn" %>
+          </h4>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
+    
+
+
+
