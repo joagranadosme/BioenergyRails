@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102164352) do
+ActiveRecord::Schema.define(version: 20171103045642) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -31,6 +31,21 @@ ActiveRecord::Schema.define(version: 20171102164352) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "perspective"
+    t.string "description"
+    t.string "generalIndicator"
+    t.string "specificIndicator"
+    t.string "formula"
+    t.integer "weight"
+    t.integer "type"
+    t.integer "measure"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
