@@ -1,0 +1,33 @@
+# == Schema Information
+#
+# Table name: periods
+#
+#  id         :integer          not null, primary key
+#  number     :integer
+#  expiration :date
+#  proposed   :integer
+#  reached    :integer
+#  compromise :string
+#  commentary :string
+#  goal_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 1
+  expiration: 2017-11-03
+  proposed: 1
+  reached: 1
+  compromise: MyString
+  commentary: MyString
+
+two:
+  number: 1
+  expiration: 2017-11-03
+  proposed: 1
+  reached: 1
+  compromise: MyString
+  commentary: MyString

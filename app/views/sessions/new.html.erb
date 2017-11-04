@@ -14,34 +14,35 @@
       <div class="row">
         <div class="col-md-offset-4 col-md-4">
           <div class="panel panel-default">
-            
+
             <div class="panel-heading" style="">
-               <h1>Log In</h1>
+               <h1>Ingresar</h1>
             </div>
-            
+
             <%= form_tag sessions_path do %>
-            
+
                <% flash.each do |name, msg| %>
                 <div class="alert alert-danger alert-dismissable">
                   <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
                   <%= content_tag :div, msg, :id => "flash_#{name}" %>
                 </div>
               <% end %>
-              
+
               <div class="panel-body" style="">
                 <div class="container-fluid">
                   <p>
-                    <%= label_tag :document %><br />
+                    <%= label_tag "Documento" %><br />
                     <%= text_field_tag :document, params[:document], class:"form" %>
                   </p>
                   <p>
-                    <%= label_tag :password %><br />
+                    <%= label_tag "Contraseña" %><br />
                     <%= password_field_tag :password, nil,class:"form" %>
                   </p>
                 </div>
-                <%= submit_tag "Log in", class:"btn", style:"float: right" %>
+                <%= submit_tag "Ingresar", class:"btn", style:"float: right" %>
               </div>
-              
+
+              <!--
               <div class="panel-footer">
                 <div id="user_nav" class="container-fluid">
                   <% if !current_user %>
@@ -50,7 +51,8 @@
                   <% end %>
                 </div>
               </div>
-              
+              -->
+
             <% end %>
           </div>
         </div>
@@ -58,4 +60,3 @@
     </div>
   </body>
 </html>
-    

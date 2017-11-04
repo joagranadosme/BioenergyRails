@@ -9,8 +9,9 @@
 #  specificIndicator :string
 #  formula           :string
 #  weight            :integer
-#  type              :integer
+#  typeGoal          :integer
 #  measure           :integer
+#  num_periods       :integer
 #  user_id           :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null

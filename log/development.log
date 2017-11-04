@@ -14871,3 +14871,1672 @@ Processing by EvaluatedController#step_two as HTML
 Completed 200 OK in 20ms (Views: 18.0ms | ActiveRecord: 0.4ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePeriods (20171103180112)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "periods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "number" integer, "expiration" date, "proposed" integer, "reached" integer, "compromise" varchar, "commentary" varchar, "goal_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_b09652bfcc"
+FOREIGN KEY ("goal_id")
+  REFERENCES "goals" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_periods_on_goal_id" ON "periods" ("goal_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171103180112"]]
+  [1m[35m (210.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_goals_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_goals_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_periods_on_goal_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_periods_on_goal_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_area_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_area_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_charge_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_charge_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_role_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_role_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (290.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (201.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171031112157)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "document" integer, "step" integer, "boss" integer, "departament_id" integer, "role_id" integer, "charge_id" integer, "area_id" integer, "password_hash" varchar, "password_salt" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_436c8a627c"
+FOREIGN KEY ("departament_id")
+  REFERENCES "departaments" ("id")
+, CONSTRAINT "fk_rails_642f17018b"
+FOREIGN KEY ("role_id")
+  REFERENCES "roles" ("id")
+, CONSTRAINT "fk_rails_417ee3cdfb"
+FOREIGN KEY ("charge_id")
+  REFERENCES "charges" ("id")
+, CONSTRAINT "fk_rails_8f8a4b3fcb"
+FOREIGN KEY ("area_id")
+  REFERENCES "areas" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_users_on_departament_id" ON "users" ("departament_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_users_on_role_id" ON "users" ("role_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_role_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_role_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_users_on_charge_id" ON "users" ("charge_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_charge_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_charge_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_role_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_role_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_users_on_area_id" ON "users" ("area_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031112157"]]
+  [1m[35m (153.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDepartaments (20171102153855)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "departaments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102153855"]]
+  [1m[35m (203.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRoles (20171102154554)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154554"]]
+  [1m[35m (171.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCharges (20171102154607)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "charges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154607"]]
+  [1m[35m (323.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateAreas (20171102154615)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "areas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154615"]]
+  [1m[35m (186.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddingData (20171102164352)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerencia"], ["created_at", "2017-11-03 18:12:05.754393"], ["updated_at", "2017-11-03 18:12:05.754393"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sistemas"], ["created_at", "2017-11-03 18:12:05.756691"], ["updated_at", "2017-11-03 18:12:05.756691"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerente"], ["created_at", "2017-11-03 18:12:05.765077"], ["updated_at", "2017-11-03 18:12:05.765077"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Ingeniero"], ["created_at", "2017-11-03 18:12:05.766548"], ["updated_at", "2017-11-03 18:12:05.766548"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Administración"], ["created_at", "2017-11-03 18:12:05.775766"], ["updated_at", "2017-11-03 18:12:05.775766"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Comunicaciones"], ["created_at", "2017-11-03 18:12:05.777504"], ["updated_at", "2017-11-03 18:12:05.777504"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluador"], ["created_at", "2017-11-03 18:12:05.785274"], ["updated_at", "2017-11-03 18:12:05.785274"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluado"], ["created_at", "2017-11-03 18:12:05.786819"], ["updated_at", "2017-11-03 18:12:05.786819"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "EvaluadorEvaluado"], ["created_at", "2017-11-03 18:12:05.788407"], ["updated_at", "2017-11-03 18:12:05.788407"]]
+  [1m[36mArea Load (0.2ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "joagranadosmendez@unal.edu.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jonathan Granados"], ["email", "joagranadosmendez@unal.edu.co"], ["document", 1032459412], ["step", 0], ["departament_id", 2], ["role_id", 2], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$EonWUQkEsWHmVSSavpV28upYzVeu.ELUNTdrryUj8My7bs5Wj29YC"], ["password_salt", "$2a$10$EonWUQkEsWHmVSSavpV28u"], ["created_at", "2017-11-03 18:12:05.899367"], ["updated_at", "2017-11-03 18:12:05.899367"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "alexander:forero@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1234], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Alexander Forero"], ["email", "alexander:forero@gmail.com"], ["document", 1234], ["step", 0], ["departament_id", 1], ["role_id", 1], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$kZt/iITnUlgoa5h7.BdS.OVV2XjEW0EEGEMVVL1ZSlrX5n1HS06pW"], ["password_salt", "$2a$10$kZt/iITnUlgoa5h7.BdS.O"], ["created_at", "2017-11-03 18:12:05.989555"], ["updated_at", "2017-11-03 18:12:05.989555"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "joagranadosmendez@unal.edu.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "juliet.eichmann@larsonschinner.net"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 718395168], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Kailey Kessler III"], ["email", "juliet.eichmann@larsonschinner.net"], ["document", 718395168], ["step", 0], ["departament_id", 1], ["role_id", 3], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$FRQxMLyThTC9nG/XvyIrE.FEJpWUXNTNQzxCORDIR0t96av2UjKPm"], ["password_salt", "$2a$10$FRQxMLyThTC9nG/XvyIrE."], ["created_at", "2017-11-03 18:12:06.577811"], ["updated_at", "2017-11-03 18:12:06.577811"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "josiah@moriettebergstrom.info"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 167678733], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Enoch Nitzsche"], ["email", "josiah@moriettebergstrom.info"], ["document", 167678733], ["step", 0], ["departament_id", 1], ["role_id", 3], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$uyroEw4ng77rxVfK1q/tyOlY//sezTjPjc/yoFcklFLcu2mKKQK5y"], ["password_salt", "$2a$10$uyroEw4ng77rxVfK1q/tyO"], ["created_at", "2017-11-03 18:12:06.659294"], ["updated_at", "2017-11-03 18:12:06.659294"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "brisa@parisiancorwin.io"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 866951956], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mazie Cole"], ["email", "brisa@parisiancorwin.io"], ["document", 866951956], ["step", 0], ["departament_id", 2], ["role_id", 3], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$3s1GR.crMXQxLudNkT8jnOWsGXvwLpGgzOuYPtM3dvy2hlQV2/D6G"], ["password_salt", "$2a$10$3s1GR.crMXQxLudNkT8jnO"], ["created_at", "2017-11-03 18:12:06.740911"], ["updated_at", "2017-11-03 18:12:06.740911"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "madonna_leannon@towne.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 700961298], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ottis Smith"], ["email", "madonna_leannon@towne.co"], ["document", 700961298], ["step", 0], ["departament_id", 1], ["role_id", 3], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$5OQ4HlA1BHzJkOpLq0iaj.JfWvJVpfPgesJM7CDNCl0.YJEgBuD2O"], ["password_salt", "$2a$10$5OQ4HlA1BHzJkOpLq0iaj."], ["created_at", "2017-11-03 18:12:06.823616"], ["updated_at", "2017-11-03 18:12:06.823616"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "athena_monahan@murazik.biz"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 936850299], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Kyla Tromp III"], ["email", "athena_monahan@murazik.biz"], ["document", 936850299], ["step", 0], ["departament_id", 1], ["role_id", 3], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$lfCKKnxXPhQCFZwUPwQqB.Geg.n8jeJBufrXtjxA.rNOj.AGSZktu"], ["password_salt", "$2a$10$lfCKKnxXPhQCFZwUPwQqB."], ["created_at", "2017-11-03 18:12:06.905243"], ["updated_at", "2017-11-03 18:12:06.905243"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "samson.mohr@johnston.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 16095967], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Houston Hegmann"], ["email", "samson.mohr@johnston.com"], ["document", 16095967], ["step", 0], ["departament_id", 1], ["role_id", 3], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$aky8kZDu1Oy6G9JUAqlTceXfiVwHtD1sTRvS1vMvXlCDLUeyFOBra"], ["password_salt", "$2a$10$aky8kZDu1Oy6G9JUAqlTce"], ["created_at", "2017-11-03 18:12:06.987097"], ["updated_at", "2017-11-03 18:12:06.987097"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "oral.cormier@heaney.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 256874202], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Raphaelle Zboncak"], ["email", "oral.cormier@heaney.com"], ["document", 256874202], ["step", 0], ["departament_id", 2], ["role_id", 2], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$RnlpbAqNETDXm0j386F/9u4sNgeA8CPcWz0N2efJIELu1nFm7wvji"], ["password_salt", "$2a$10$RnlpbAqNETDXm0j386F/9u"], ["created_at", "2017-11-03 18:12:07.069194"], ["updated_at", "2017-11-03 18:12:07.069194"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "lela_breitenberg@borer.info"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 439980803], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Miss Daphnee Wunsch"], ["email", "lela_breitenberg@borer.info"], ["document", 439980803], ["step", 0], ["departament_id", 1], ["role_id", 2], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$wzhCxfepIq5cIy7j0ITN0OgI895wo3w/vasUg9ugV3jN.KOOiAAby"], ["password_salt", "$2a$10$wzhCxfepIq5cIy7j0ITN0O"], ["created_at", "2017-11-03 18:12:07.151031"], ["updated_at", "2017-11-03 18:12:07.151031"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "laron@larson.info"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 774260376], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Markus Leannon"], ["email", "laron@larson.info"], ["document", 774260376], ["step", 0], ["departament_id", 1], ["role_id", 3], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$4LhdFpbNZT/wYXAM.TEM9.riXSqFgYMLtF59dpp75JMcaMnHNq3/a"], ["password_salt", "$2a$10$4LhdFpbNZT/wYXAM.TEM9."], ["created_at", "2017-11-03 18:12:07.232392"], ["updated_at", "2017-11-03 18:12:07.232392"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "humberto@hudson.name"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 767862626], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Estelle Orn"], ["email", "humberto@hudson.name"], ["document", 767862626], ["step", 0], ["departament_id", 2], ["role_id", 1], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$UN4Ga0tApzKMitg2eILhGu4vAftjffv1nIJPZCXIfvpZHHfeSudyq"], ["password_salt", "$2a$10$UN4Ga0tApzKMitg2eILhGu"], ["created_at", "2017-11-03 18:12:07.313650"], ["updated_at", "2017-11-03 18:12:07.313650"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "dameon.bechtelar@friesenmclaughlin.io"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 145002304], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Miss Marc Kertzmann"], ["email", "dameon.bechtelar@friesenmclaughlin.io"], ["document", 145002304], ["step", 0], ["departament_id", 2], ["role_id", 2], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$0NBu20vZaMmPbGwaIbksOeeB8Rxwb9y0jGPiHw4eCSC305VEKwAka"], ["password_salt", "$2a$10$0NBu20vZaMmPbGwaIbksOe"], ["created_at", "2017-11-03 18:12:07.395646"], ["updated_at", "2017-11-03 18:12:07.395646"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "casper_crooks@wyman.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 42036132], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Leila Volkman MD"], ["email", "casper_crooks@wyman.org"], ["document", 42036132], ["step", 0], ["departament_id", 1], ["role_id", 2], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$ymx2sFyoYtMA5QGCHm2MYeHrpM9ooU0x1tM2eSPyICTJQQc.Y2Jr6"], ["password_salt", "$2a$10$ymx2sFyoYtMA5QGCHm2MYe"], ["created_at", "2017-11-03 18:12:07.476955"], ["updated_at", "2017-11-03 18:12:07.476955"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "viva.powlowski@hettinger.info"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 949532745], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Althea Jerde"], ["email", "viva.powlowski@hettinger.info"], ["document", 949532745], ["step", 0], ["departament_id", 2], ["role_id", 3], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$z6ao1SyeDRmAbUU9cS6pWu12tA39.npr5OjqHFZzRZlsEmtXMsPfK"], ["password_salt", "$2a$10$z6ao1SyeDRmAbUU9cS6pWu"], ["created_at", "2017-11-03 18:12:07.558507"], ["updated_at", "2017-11-03 18:12:07.558507"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jaime@sipes.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 281303503], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ned Tillman"], ["email", "jaime@sipes.org"], ["document", 281303503], ["step", 0], ["departament_id", 1], ["role_id", 3], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$dErJeho0jb4I4amQjw1.P.3fiKeIGQLhZ3ID99AR1fvqKEqnYCYI2"], ["password_salt", "$2a$10$dErJeho0jb4I4amQjw1.P."], ["created_at", "2017-11-03 18:12:07.639952"], ["updated_at", "2017-11-03 18:12:07.639952"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "izabella@kozeyhills.name"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 205434195], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Evangeline Gleichner"], ["email", "izabella@kozeyhills.name"], ["document", 205434195], ["step", 0], ["departament_id", 2], ["role_id", 2], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$tq2kIK99e1wgLKQ73nzxjuz5LPNzXyfsBt5wkIKFVjKZMaTcU6utG"], ["password_salt", "$2a$10$tq2kIK99e1wgLKQ73nzxju"], ["created_at", "2017-11-03 18:12:07.726739"], ["updated_at", "2017-11-03 18:12:07.726739"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "rhianna_will@nicolas.net"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 998716952], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Priscilla Schumm"], ["email", "rhianna_will@nicolas.net"], ["document", 998716952], ["step", 0], ["departament_id", 1], ["role_id", 3], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$4T6YXjhx9A1GRBUAwdF4newcqJ7ks3uEqG0HpdH7syk1qC76A.vyq"], ["password_salt", "$2a$10$4T6YXjhx9A1GRBUAwdF4ne"], ["created_at", "2017-11-03 18:12:07.812756"], ["updated_at", "2017-11-03 18:12:07.812756"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ralph.dubuque@wehnerking.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 64619640], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Shawna Heidenreich"], ["email", "ralph.dubuque@wehnerking.com"], ["document", 64619640], ["step", 0], ["departament_id", 2], ["role_id", 3], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$MflUpNu3n.K3J0r4qJGKl.m/DkQLAIqtLfWZh2IVPz8Df0oSlEyHC"], ["password_salt", "$2a$10$MflUpNu3n.K3J0r4qJGKl."], ["created_at", "2017-11-03 18:12:07.895779"], ["updated_at", "2017-11-03 18:12:07.895779"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "keyshawn@jerde.io"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 201707784], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ms. Josue Kassulke"], ["email", "keyshawn@jerde.io"], ["document", 201707784], ["step", 0], ["departament_id", 2], ["role_id", 3], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$ddhVzHqQxhM0QEvrlqP7Y.lvG9bWRgruZCpVTxAprSPciqyi01Mp."], ["password_salt", "$2a$10$ddhVzHqQxhM0QEvrlqP7Y."], ["created_at", "2017-11-03 18:12:07.977489"], ["updated_at", "2017-11-03 18:12:07.977489"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "lance@bogan.name"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 807978227], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Lura O'Keefe"], ["email", "lance@bogan.name"], ["document", 807978227], ["step", 0], ["departament_id", 1], ["role_id", 2], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$cLT1zTTOwNf8lx5RKREqrurjW9X10XAvSmmtpzWDK.54fpDSr77/G"], ["password_salt", "$2a$10$cLT1zTTOwNf8lx5RKREqru"], ["created_at", "2017-11-03 18:12:08.058880"], ["updated_at", "2017-11-03 18:12:08.058880"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ayana@lehner.biz"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 40363655], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Colten Daugherty"], ["email", "ayana@lehner.biz"], ["document", 40363655], ["step", 0], ["departament_id", 1], ["role_id", 3], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$hDC/mUdtLLUI9SQWZxQcve/Tbs/W.vJx5DWV.UCOqbyjH.eNeLO0q"], ["password_salt", "$2a$10$hDC/mUdtLLUI9SQWZxQcve"], ["created_at", "2017-11-03 18:12:08.144721"], ["updated_at", "2017-11-03 18:12:08.144721"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kenya@koepp.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 618789569], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ericka Dibbert"], ["email", "kenya@koepp.co"], ["document", 618789569], ["step", 0], ["departament_id", 1], ["role_id", 3], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$W3Gw7QUrEcnWszx7bjwHheg8.NHmHKxOqOnZX9Kear5mY3C0hcudm"], ["password_salt", "$2a$10$W3Gw7QUrEcnWszx7bjwHhe"], ["created_at", "2017-11-03 18:12:08.226243"], ["updated_at", "2017-11-03 18:12:08.226243"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102164352"]]
+  [1m[35m (342.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateGoals (20171103045642)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "goals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "perspective" varchar, "description" varchar, "generalIndicator" varchar, "specificIndicator" varchar, "formula" varchar, "weight" integer, "typeGoal" integer, "measure" integer, "num_periods" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_c5fd9c8a38"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_goals_on_user_id" ON "goals" ("user_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171103045642"]]
+  [1m[35m (170.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePeriods (20171103180112)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "periods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "number" integer, "expiration" date, "proposed" integer, "reached" integer, "compromise" varchar, "commentary" varchar, "goal_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_b09652bfcc"
+FOREIGN KEY ("goal_id")
+  REFERENCES "goals" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_periods_on_goal_id" ON "periods" ("goal_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171103180112"]]
+  [1m[35m (165.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-03 18:12:08.939671"], ["updated_at", "2017-11-03 18:12:08.939671"]]
+  [1m[35m (172.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_goals_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_goals_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_periods_on_goal_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_periods_on_goal_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_area_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_area_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_charge_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_charge_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_role_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_role_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/evaluated_two" for 127.0.0.1 at 2017-11-03 13:22:35 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EvaluatedController#step_two as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_two.html.erb within layouts/application
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered evaluated/step_two.html.erb within layouts/application (163.2ms)
+Completed 200 OK in 215ms (Views: 179.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-03 13:22:41 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (558.1ms)
+Completed 200 OK in 588ms (Views: 570.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-03 17:51:42 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered sessions/new.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 30ms (Views: 28.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/log_out" for 127.0.0.1 at 2017-11-03 17:51:49 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/log_out" for 127.0.0.1 at 2017-11-03 17:51:49 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/log_out" for 127.0.0.1 at 2017-11-03 17:51:49 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/log_out" for 127.0.0.1 at 2017-11-03 17:51:49 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-03 17:51:49 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 41ms (Views: 39.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-03 17:51:55 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 29ms (Views: 27.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-03 17:51:57 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 29ms (Views: 26.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-03 17:53:07 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 30ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-03 17:53:47 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 28ms (Views: 26.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-11-03 17:53:52 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5t4hl8GTtiA1hTcysg+OO2Q5VKvdpASGjPZ/pdNA9IGw+gARW7I8vGNv1b/5di6Ys7pepFcSfnBvcge6cGpFPA==", "document"=>"1032459412", "password"=>"[FILTERED]", "commit"=>"Ingresar"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+Redirected to http://localhost:3000/index
+Completed 302 Found in 126ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/index" for 127.0.0.1 at 2017-11-03 17:53:52 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 53ms (Views: 28.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/log_out" for 127.0.0.1 at 2017-11-03 17:53:57 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-03 17:53:57 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (24.2ms)
+Completed 200 OK in 52ms (Views: 50.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-11-03 17:54:11 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UThzWMEKsKlO4G4gsKUj9oyvcSHQ1X/MoCj1F3FGKvpMnLB7XHg7T1ROUUAvmoREy7aS/Qv78s/hIR/j2CZRVg==", "document"=>"1032459412", "password"=>"[FILTERED]", "commit"=>"Ingresar"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+Redirected to http://localhost:3000/index
+Completed 302 Found in 126ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/index" for 127.0.0.1 at 2017-11-03 17:54:11 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 29ms (Views: 25.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/evaluated" for 127.0.0.1 at 2017-11-03 17:54:14 -0500
+Processing by HomeController#evaluated as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/evaluated.html.erb within layouts/application
+  Rendered home/evaluated.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 37ms (Views: 34.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/evaluated_one" for 127.0.0.1 at 2017-11-03 17:54:16 -0500
+Processing by EvaluatedController#step_one as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.3ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering evaluated/step_one.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."departament_id" = 2[0m
+  Rendered evaluated/step_one.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 42ms (Views: 24.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/evaluated_two" for 127.0.0.1 at 2017-11-03 17:54:20 -0500
+Processing by EvaluatedController#step_two as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_two.html.erb within layouts/application
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered evaluated/step_two.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 37ms (Views: 33.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-03 17:54:22 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (18.5ms)
+Completed 200 OK in 44ms (Views: 41.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/log_out" for 127.0.0.1 at 2017-11-03 17:54:38 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-03 17:54:38 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 30ms (Views: 27.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-11-03 17:54:57 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3t6KrBHfpHNoAycXfYx2XxrGWgAkwEdOAPpi2OY4YY/DekmPjK0vlXKtGHfis9HtXd+53P/uyk1B84gsT1gaIw==", "document"=>"1234", "password"=>"[FILTERED]", "commit"=>"Ingresar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1234], ["LIMIT", 1]]
+Redirected to http://localhost:3000/index
+Completed 302 Found in 124ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/index" for 127.0.0.1 at 2017-11-03 17:54:57 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 31ms (Views: 25.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/evaluator" for 127.0.0.1 at 2017-11-03 17:55:01 -0500
+Processing by HomeController#evaluator as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering home/evaluator.html.erb within layouts/application
+  Rendered home/evaluator.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 41ms (Views: 37.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/evaluator" for 127.0.0.1 at 2017-11-03 17:55:05 -0500
+Processing by HomeController#evaluator as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering home/evaluator.html.erb within layouts/application
+  Rendered home/evaluator.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 31ms (Views: 28.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/evaluator" for 127.0.0.1 at 2017-11-03 17:55:06 -0500
+Processing by HomeController#evaluator as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering home/evaluator.html.erb within layouts/application
+  Rendered home/evaluator.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 45ms (Views: 42.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-03 17:55:11 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered sessions/new.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 33ms (Views: 30.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-03 17:55:13 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered sessions/new.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 29ms (Views: 27.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-11-03 18:50:37 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JcNOg8al/O2DBwDHQq2A1E9HUAXuUz1BbeQ6kxx1sQM4Z42gW9d3C5mpP6fdkidmCF6z2TV9sEIs7dBntRXKrw==", "document"=>"1032459412", "password"=>"[FILTERED]", "commit"=>"Ingresar"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+Redirected to http://localhost:3000/index
+Completed 302 Found in 125ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/index" for 127.0.0.1 at 2017-11-03 18:50:37 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 31ms (Views: 25.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/evaluated" for 127.0.0.1 at 2017-11-03 18:51:17 -0500
+Processing by HomeController#evaluated as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/evaluated.html.erb within layouts/application
+  Rendered home/evaluated.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 40ms (Views: 38.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/evaluated_one" for 127.0.0.1 at 2017-11-03 18:51:22 -0500
+Processing by EvaluatedController#step_one as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.3ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering evaluated/step_one.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."departament_id" = 2[0m
+  Rendered evaluated/step_one.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 36ms (Views: 30.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/evaluated_two" for 127.0.0.1 at 2017-11-03 18:51:25 -0500
+Processing by EvaluatedController#step_two as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_two.html.erb within layouts/application
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered evaluated/step_two.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 36ms (Views: 32.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-03 18:51:27 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (19.2ms)
+Completed 200 OK in 47ms (Views: 44.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/index" for 127.0.0.1 at 2017-11-03 18:51:33 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 39ms (Views: 33.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-04 12:35:43 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (474.3ms)
+Completed 200 OK in 559ms (Views: 551.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-11-04 12:35:54 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AMBAyd5CrOEnyJa58DlXt1LSIAAk9u2reQc0lM77NXdul6dL248Kp2+ovUDYTG9IGei+fOsb1ZR8MEdkfEVJ1g==", "document"=>"1032459412", "password"=>"[FILTERED]", "commit"=>"Ingresar"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+Redirected to http://localhost:3000/index
+Completed 302 Found in 260ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/index" for 127.0.0.1 at 2017-11-04 12:35:54 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 44ms (Views: 18.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/evaluated" for 127.0.0.1 at 2017-11-04 12:38:02 -0500
+Processing by HomeController#evaluated as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/evaluated.html.erb within layouts/application
+  Rendered home/evaluated.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 53ms (Views: 38.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/evaluated" for 127.0.0.1 at 2017-11-04 16:11:36 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#evaluated as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/evaluated.html.erb within layouts/application
+  Rendered home/evaluated.html.erb within layouts/application (451.2ms)
+Completed 200 OK in 544ms (Views: 498.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/periods/new" for 127.0.0.1 at 2017-11-04 16:12:08 -0500
+Processing by PeriodsController#new as HTML
+  Rendering periods/new.html.erb within layouts/application
+  Rendered periods/new.html.erb within layouts/application (147.4ms)
+Completed 500 Internal Server Error in 167ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `periods_path' for #<#<Class:0x00007f3d54e4d4f8>:0x00007f3d54e35150>
+Did you mean?  periods_new_path):
+    1: <body>
+    2:   <div class="container margin-top">
+    3:     <%= form_for @period do |p| %>
+    4: 
+    5:       <% if @period.errors.any? %>
+    6:         <div class="error_messages">
+  
+app/views/periods/new.html.erb:3:in `_app_views_periods_new_html_erb__2293083817963605524_69950697010460'
+Started GET "/periods/new/100" for 127.0.0.1 at 2017-11-04 16:12:14 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/periods/new/100"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/periods/new/" for 127.0.0.1 at 2017-11-04 16:12:18 -0500
+Processing by PeriodsController#new as HTML
+  Rendering periods/new.html.erb within layouts/application
+  Rendered periods/new.html.erb within layouts/application (114.3ms)
+Completed 500 Internal Server Error in 117ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `periods_path' for #<#<Class:0x00007f3d54e4d4f8>:0x00007f3d554596a8>
+Did you mean?  periods_new_path):
+    1: <body>
+    2:   <div class="container margin-top">
+    3:     <%= form_for @period do |p| %>
+    4: 
+    5:       <% if @period.errors.any? %>
+    6:         <div class="error_messages">
+  
+app/views/periods/new.html.erb:3:in `_app_views_periods_new_html_erb__2293083817963605524_69950790205680'
+Started GET "/periods/new/" for 127.0.0.1 at 2017-11-04 16:13:19 -0500
+Processing by PeriodsController#new as HTML
+  Rendering periods/new.html.erb within layouts/application
+  Rendered periods/new.html.erb within layouts/application (98.1ms)
+Completed 500 Internal Server Error in 120ms (ActiveRecord: 1.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `proposed' for #<ActionView::Helpers::FormBuilder:0x00007f3d564ec178>):
+    16:         </div>
+    17:       <% end %>
+    18: 
+    19:       <%= p.proposed "Propuesto" %><br />
+    20:       <%= p.number_field :proposed, class:"form" %>
+    21: 
+    22:       <%= p.hidden_field :reached, :value => -1 %>
+  
+app/views/periods/new.html.erb:19:in `block in _app_views_periods_new_html_erb__2293083817963605524_69950708929200'
+app/views/periods/new.html.erb:3:in `_app_views_periods_new_html_erb__2293083817963605524_69950708929200'
+Started GET "/periods/new/" for 127.0.0.1 at 2017-11-04 16:14:04 -0500
+Processing by PeriodsController#new as HTML
+  Rendering periods/new.html.erb within layouts/application
+  Rendered periods/new.html.erb within layouts/application (579.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 626ms (Views: 623.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/index" for 127.0.0.1 at 2017-11-04 16:14:09 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 40ms (Views: 19.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/evaluated" for 127.0.0.1 at 2017-11-04 16:14:11 -0500
+Processing by HomeController#evaluated as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/evaluated.html.erb within layouts/application
+  Rendered home/evaluated.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 24ms (Views: 21.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/evaluated_one" for 127.0.0.1 at 2017-11-04 16:14:13 -0500
+Processing by EvaluatedController#step_one as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.2ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering evaluated/step_one.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."departament_id" = 2[0m
+  Rendered evaluated/step_one.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 49ms (Views: 20.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/evaluated_two" for 127.0.0.1 at 2017-11-04 16:14:14 -0500
+Processing by EvaluatedController#step_two as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_two.html.erb within layouts/application
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered evaluated/step_two.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 33ms (Views: 24.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-04 16:14:17 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (235.8ms)
+Completed 500 Internal Server Error in 256ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x00007f3d561cdb18>:0x00007f3d561c73f8>):
+    51:         <%= g.hidden_field :typeGoal, :value => 0 %>
+    52:         <%= g.hidden_field :user_id, :value => current_user.id %>
+    53: 
+    54:         <%= f.fields_for @goal.build_period do |per| %>
+    55:           <%= render periods_new_path, locals: { form: per } %>
+    56:         <% end %>
+    57: 
+  
+app/views/goals/new.html.erb:54:in `block in _app_views_goals_new_html_erb___4532451740653158671_69950707233540'
+app/views/goals/new.html.erb:14:in `_app_views_goals_new_html_erb___4532451740653158671_69950707233540'
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-04 16:14:34 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (24.3ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `build_period' for #<Goal:0x00007f3d60321320>
+Did you mean?  build_user):
+    51:         <%= g.hidden_field :typeGoal, :value => 0 %>
+    52:         <%= g.hidden_field :user_id, :value => current_user.id %>
+    53: 
+    54:         <%= g.fields_for @goal.build_period do |per| %>
+    55:           <%= render periods_new_path, locals: { form: per } %>
+    56:         <% end %>
+    57: 
+  
+app/views/goals/new.html.erb:54:in `block in _app_views_goals_new_html_erb___4532451740653158671_69950791766720'
+app/views/goals/new.html.erb:14:in `_app_views_goals_new_html_erb___4532451740653158671_69950791766720'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_goals_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_goals_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_periods_on_goal_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_periods_on_goal_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_area_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_area_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_charge_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_charge_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_role_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_role_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (623.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (273.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20171031112157)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "document" integer, "step" integer, "boss" integer, "departament_id" integer, "role_id" integer, "charge_id" integer, "area_id" integer, "password_hash" varchar, "password_salt" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_436c8a627c"
+FOREIGN KEY ("departament_id")
+  REFERENCES "departaments" ("id")
+, CONSTRAINT "fk_rails_642f17018b"
+FOREIGN KEY ("role_id")
+  REFERENCES "roles" ("id")
+, CONSTRAINT "fk_rails_417ee3cdfb"
+FOREIGN KEY ("charge_id")
+  REFERENCES "charges" ("id")
+, CONSTRAINT "fk_rails_8f8a4b3fcb"
+FOREIGN KEY ("area_id")
+  REFERENCES "areas" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_users_on_departament_id" ON "users" ("departament_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_users_on_role_id" ON "users" ("role_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_role_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_role_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_users_on_charge_id" ON "users" ("charge_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_charge_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_charge_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_role_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_role_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_users_on_area_id" ON "users" ("area_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171031112157"]]
+  [1m[35m (192.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDepartaments (20171102153855)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "departaments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102153855"]]
+  [1m[35m (170.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRoles (20171102154554)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154554"]]
+  [1m[35m (65.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCharges (20171102154607)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "charges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154607"]]
+  [1m[35m (79.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateAreas (20171102154615)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "areas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102154615"]]
+  [1m[35m (82.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddingData (20171102164352)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerencia"], ["created_at", "2017-11-04 21:16:14.736543"], ["updated_at", "2017-11-04 21:16:14.736543"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "areas" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sistemas"], ["created_at", "2017-11-04 21:16:14.739948"], ["updated_at", "2017-11-04 21:16:14.739948"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Gerente"], ["created_at", "2017-11-04 21:16:14.758769"], ["updated_at", "2017-11-04 21:16:14.758769"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "charges" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Ingeniero"], ["created_at", "2017-11-04 21:16:14.760221"], ["updated_at", "2017-11-04 21:16:14.760221"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Administración"], ["created_at", "2017-11-04 21:16:14.777274"], ["updated_at", "2017-11-04 21:16:14.777274"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "departaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Comunicaciones"], ["created_at", "2017-11-04 21:16:14.778721"], ["updated_at", "2017-11-04 21:16:14.778721"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluador"], ["created_at", "2017-11-04 21:16:14.787300"], ["updated_at", "2017-11-04 21:16:14.787300"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Evaluado"], ["created_at", "2017-11-04 21:16:14.788774"], ["updated_at", "2017-11-04 21:16:14.788774"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "roles" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "EvaluadorEvaluado"], ["created_at", "2017-11-04 21:16:14.789864"], ["updated_at", "2017-11-04 21:16:14.789864"]]
+  [1m[36mArea Load (0.2ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "joagranadosmendez@unal.edu.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jonathan Granados"], ["email", "joagranadosmendez@unal.edu.co"], ["document", 1032459412], ["step", 0], ["departament_id", 2], ["role_id", 2], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$6/Ozo45bEch6QyAd1.ook.d//890zyqCfy6tSItGmU6oZFAYd.Qda"], ["password_salt", "$2a$10$6/Ozo45bEch6QyAd1.ook."], ["created_at", "2017-11-04 21:16:14.900541"], ["updated_at", "2017-11-04 21:16:14.900541"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "alexander:forero@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1234], ["LIMIT", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Alexander Forero"], ["email", "alexander:forero@gmail.com"], ["document", 1234], ["step", 0], ["departament_id", 1], ["role_id", 1], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$x5oJOVvXt2fQTQlcGV4sfeWj5e.lcsj5h8O8nZVIyob7H8UFJHAiu"], ["password_salt", "$2a$10$x5oJOVvXt2fQTQlcGV4sfe"], ["created_at", "2017-11-04 21:16:14.982660"], ["updated_at", "2017-11-04 21:16:14.982660"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "joagranadosmendez@unal.edu.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "carol.schuppe@kirlinroob.info"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 227552852], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Coralie Orn"], ["email", "carol.schuppe@kirlinroob.info"], ["document", 227552852], ["step", 0], ["departament_id", 2], ["role_id", 2], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$AkQV1d0VmaHi9DLkpixi3ObPShrBj/mWPZffjSWWcSF3oHoGnsqd6"], ["password_salt", "$2a$10$AkQV1d0VmaHi9DLkpixi3O"], ["created_at", "2017-11-04 21:16:15.512761"], ["updated_at", "2017-11-04 21:16:15.512761"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mitchel_howe@quigleykonopelski.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 192764075], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Noelia Mills MD"], ["email", "mitchel_howe@quigleykonopelski.com"], ["document", 192764075], ["step", 0], ["departament_id", 2], ["role_id", 3], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$UBcgbA0LhXbp7Iozf3gvbudyy1uQ7BUjkUc489.bnydK2vpEiM24y"], ["password_salt", "$2a$10$UBcgbA0LhXbp7Iozf3gvbu"], ["created_at", "2017-11-04 21:16:15.594136"], ["updated_at", "2017-11-04 21:16:15.594136"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "tianna.stoltenberg@wehner.name"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 438063192], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jimmie Harber"], ["email", "tianna.stoltenberg@wehner.name"], ["document", 438063192], ["step", 0], ["departament_id", 1], ["role_id", 3], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$l3u/WGWlBOii5aNHuGFFx.Sak9PbrPR44W53cksZoSvMlzuc/.d6C"], ["password_salt", "$2a$10$l3u/WGWlBOii5aNHuGFFx."], ["created_at", "2017-11-04 21:16:15.675344"], ["updated_at", "2017-11-04 21:16:15.675344"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "maybelle.stoltenberg@beahancorkery.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 235493623], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Cleta Wuckert"], ["email", "maybelle.stoltenberg@beahancorkery.co"], ["document", 235493623], ["step", 0], ["departament_id", 2], ["role_id", 2], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$xi27gJhjBWUcEQak2FN5Felx4tJ7WS/7bz8K2fnDkiLurfb4Htonm"], ["password_salt", "$2a$10$xi27gJhjBWUcEQak2FN5Fe"], ["created_at", "2017-11-04 21:16:15.756993"], ["updated_at", "2017-11-04 21:16:15.756993"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "price@cruickshank.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 121711177], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Gregoria Frami"], ["email", "price@cruickshank.com"], ["document", 121711177], ["step", 0], ["departament_id", 2], ["role_id", 2], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$AAKk8KEVst/CvgU2aTmqFOi6DkgLL5dU.K2kXFaq20ralLjSSOJBS"], ["password_salt", "$2a$10$AAKk8KEVst/CvgU2aTmqFO"], ["created_at", "2017-11-04 21:16:15.838178"], ["updated_at", "2017-11-04 21:16:15.838178"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "darlene@heaney.name"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 435744741], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Alaina Little I"], ["email", "darlene@heaney.name"], ["document", 435744741], ["step", 0], ["departament_id", 2], ["role_id", 1], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$RngoyfOrpZvTTp0E5tQMcuLHnU3tbqG5KvVXBQWbLN4qQd6uuDiE2"], ["password_salt", "$2a$10$RngoyfOrpZvTTp0E5tQMcu"], ["created_at", "2017-11-04 21:16:15.920216"], ["updated_at", "2017-11-04 21:16:15.920216"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "arianna.parker@legros.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 878581114], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Cyrus Lebsack"], ["email", "arianna.parker@legros.org"], ["document", 878581114], ["step", 0], ["departament_id", 1], ["role_id", 1], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$ocr.CRzBxRWC4hUOcSveJ.QSwP7PAYCpN6kZer4LoEWpBoSMaFcDy"], ["password_salt", "$2a$10$ocr.CRzBxRWC4hUOcSveJ."], ["created_at", "2017-11-04 21:16:16.002123"], ["updated_at", "2017-11-04 21:16:16.002123"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "maddison@von.biz"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 885029808], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Wade Mayer"], ["email", "maddison@von.biz"], ["document", 885029808], ["step", 0], ["departament_id", 2], ["role_id", 3], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$bKzmAoPnlzjLHY4ArMepc./bGnhrM6Dwn0WzvwOU/y2hd/Xh.F8wK"], ["password_salt", "$2a$10$bKzmAoPnlzjLHY4ArMepc."], ["created_at", "2017-11-04 21:16:16.084211"], ["updated_at", "2017-11-04 21:16:16.084211"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mikel.fritsch@kozey.io"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 963167130], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Katelyn Heaney"], ["email", "mikel.fritsch@kozey.io"], ["document", 963167130], ["step", 0], ["departament_id", 2], ["role_id", 2], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$JHDzd85XiVEQnqYRqk0Qhee8rN.ESMzvntqK6.mb3K6ht9ckclE/m"], ["password_salt", "$2a$10$JHDzd85XiVEQnqYRqk0Qhe"], ["created_at", "2017-11-04 21:16:16.167449"], ["updated_at", "2017-11-04 21:16:16.167449"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "abdiel_buckridge@robelrolfson.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 4787718], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Joanie Walker DVM"], ["email", "abdiel_buckridge@robelrolfson.org"], ["document", 4787718], ["step", 0], ["departament_id", 1], ["role_id", 2], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$vugDdIMdu2S.L3F5f157aOaWyi6Am2a8EfP6R5yriEtfDQxvvE52m"], ["password_salt", "$2a$10$vugDdIMdu2S.L3F5f157aO"], ["created_at", "2017-11-04 21:16:16.250447"], ["updated_at", "2017-11-04 21:16:16.250447"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "chesley.mitchell@wymanoberbrunner.net"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 304200425], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Keanu Gutmann"], ["email", "chesley.mitchell@wymanoberbrunner.net"], ["document", 304200425], ["step", 0], ["departament_id", 1], ["role_id", 1], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$c1KRfQKPiV0jVkczkYkQH.OWMO263M9wLb.QdO.zCt5gtMqC2oY0i"], ["password_salt", "$2a$10$c1KRfQKPiV0jVkczkYkQH."], ["created_at", "2017-11-04 21:16:16.334933"], ["updated_at", "2017-11-04 21:16:16.334933"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "clinton.green@sawayn.name"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 525657679], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Shaylee Lakin"], ["email", "clinton.green@sawayn.name"], ["document", 525657679], ["step", 0], ["departament_id", 2], ["role_id", 1], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$81dO05tMaoqnU42gFNtVdOsbqZo/JnSJwbKow7Wl1b5FH8M2YHwgC"], ["password_salt", "$2a$10$81dO05tMaoqnU42gFNtVdO"], ["created_at", "2017-11-04 21:16:16.419639"], ["updated_at", "2017-11-04 21:16:16.419639"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "leta@leannon.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 624914486], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Clair Lubowitz"], ["email", "leta@leannon.org"], ["document", 624914486], ["step", 0], ["departament_id", 2], ["role_id", 3], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$1zoQo5bN3mHPWbTdUn.7cefIAy/O/iZXvS8Vkmnue3POMyBgYtF.6"], ["password_salt", "$2a$10$1zoQo5bN3mHPWbTdUn.7ce"], ["created_at", "2017-11-04 21:16:16.503625"], ["updated_at", "2017-11-04 21:16:16.503625"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sean.auer@marvin.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 454323229], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ms. Trinity Dickinson"], ["email", "sean.auer@marvin.co"], ["document", 454323229], ["step", 0], ["departament_id", 1], ["role_id", 1], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$S3XgIGG..f6qYLas.M9aqe.6VALv89PRcDlfjPnwHn6iyeSqCM2Ay"], ["password_salt", "$2a$10$S3XgIGG..f6qYLas.M9aqe"], ["created_at", "2017-11-04 21:16:16.588247"], ["updated_at", "2017-11-04 21:16:16.588247"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sydnee@vandervort.info"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 155283402], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Kyla Leffler MD"], ["email", "sydnee@vandervort.info"], ["document", 155283402], ["step", 0], ["departament_id", 1], ["role_id", 3], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$qVwugXmRQGvPxe0wXTE2X.c4Zg9TywzPCPjkcQm.qRO6P6he15ENm"], ["password_salt", "$2a$10$qVwugXmRQGvPxe0wXTE2X."], ["created_at", "2017-11-04 21:16:16.671228"], ["updated_at", "2017-11-04 21:16:16.671228"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jensen.miller@cummings.io"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 198158541], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Lavern Jast III"], ["email", "jensen.miller@cummings.io"], ["document", 198158541], ["step", 0], ["departament_id", 2], ["role_id", 2], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$yMuXvZzkgX00tPA7X16mj.1UpCsJ5g9OGhYogSQ9nBd1DQrwpfdxO"], ["password_salt", "$2a$10$yMuXvZzkgX00tPA7X16mj."], ["created_at", "2017-11-04 21:16:16.754815"], ["updated_at", "2017-11-04 21:16:16.754815"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "bridie@swiftwunsch.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 801258773], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Bridget Stoltenberg"], ["email", "bridie@swiftwunsch.org"], ["document", 801258773], ["step", 0], ["departament_id", 2], ["role_id", 3], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$t3f3lCoUpCDrBkqtU2D5teVNEas.RPvpFugCyOx3f5b5e7sHE2Que"], ["password_salt", "$2a$10$t3f3lCoUpCDrBkqtU2D5te"], ["created_at", "2017-11-04 21:16:16.837072"], ["updated_at", "2017-11-04 21:16:16.837072"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.1ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "megane_jaskolski@botsfordblanda.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 246271044], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mr. Jerad Gerhold"], ["email", "megane_jaskolski@botsfordblanda.com"], ["document", 246271044], ["step", 0], ["departament_id", 1], ["role_id", 3], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$ccTL270T9AnWrE9wy53uKOPKF7/Z6juVvkLPryVmL80gNaj9rtLci"], ["password_salt", "$2a$10$ccTL270T9AnWrE9wy53uKO"], ["created_at", "2017-11-04 21:16:16.918929"], ["updated_at", "2017-11-04 21:16:16.918929"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "justus@collins.io"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 77788771], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dr. Jeanette Dickens"], ["email", "justus@collins.io"], ["document", 77788771], ["step", 0], ["departament_id", 2], ["role_id", 1], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$1urqwKq7OYnb2tK6mWQnvOpIHjzkV0C6buxp6vMhZEG.HGL4Nqm2G"], ["password_salt", "$2a$10$1urqwKq7OYnb2tK6mWQnvO"], ["created_at", "2017-11-04 21:16:17.001710"], ["updated_at", "2017-11-04 21:16:17.001710"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "charlie@wehnerkeler.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 942130712], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Herta Auer"], ["email", "charlie@wehnerkeler.org"], ["document", 942130712], ["step", 0], ["departament_id", 1], ["role_id", 1], ["charge_id", 2], ["area_id", 1], ["password_hash", "$2a$10$OUloVsbQgp9F8YXKK0kQ0.RDXkk9qbK1ZTw1T9oadYXlUSKoYEYFW"], ["password_salt", "$2a$10$OUloVsbQgp9F8YXKK0kQ0."], ["created_at", "2017-11-04 21:16:17.086021"], ["updated_at", "2017-11-04 21:16:17.086021"]]
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.0ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.0ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "magnolia_spencer@homenick.co"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 69896986], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "document", "step", "departament_id", "role_id", "charge_id", "area_id", "password_hash", "password_salt", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Cordell Blanda"], ["email", "magnolia_spencer@homenick.co"], ["document", 69896986], ["step", 0], ["departament_id", 2], ["role_id", 2], ["charge_id", 1], ["area_id", 1], ["password_hash", "$2a$10$qVQsi3BBMZAV9B04cN7iy.nhcg1UbL0acMFSmJRfetKdf561xVGZ."], ["password_salt", "$2a$10$qVQsi3BBMZAV9B04cN7iy."], ["created_at", "2017-11-04 21:16:17.169877"], ["updated_at", "2017-11-04 21:16:17.169877"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171102164352"]]
+  [1m[35m (273.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateGoals (20171103045642)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "goals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "perspective" varchar, "description" varchar, "generalIndicator" varchar, "specificIndicator" varchar, "formula" varchar, "weight" integer, "typeGoal" integer, "measure" integer, "num_periods" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_c5fd9c8a38"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_goals_on_user_id" ON "goals" ("user_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171103045642"]]
+  [1m[35m (204.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePeriods (20171103180112)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "periods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "number" integer, "expiration" date, "proposed" integer, "reached" integer, "compromise" varchar, "commentary" varchar, "goal_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_b09652bfcc"
+FOREIGN KEY ("goal_id")
+  REFERENCES "goals" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_periods_on_goal_id" ON "periods" ("goal_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171103180112"]]
+  [1m[35m (219.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-04 21:16:17.915305"], ["updated_at", "2017-11-04 21:16:17.915305"]]
+  [1m[35m (179.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_goals_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_goals_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_periods_on_goal_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_periods_on_goal_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_area_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_area_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_charge_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_charge_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_role_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_role_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_departament_id' AND type='index'
+[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mGoal Load (0.6ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 2]]
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-04 16:44:12 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (954.2ms)
+Completed 500 Internal Server Error in 987ms (ActiveRecord: 2.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `periods_new_path' for #<#<Class:0x0000559a86e6cc58>:0x0000559a86e67c58>
+Did you mean?  periods_path):
+    52:         <%= g.hidden_field :user_id, :value => current_user.id %>
+    53: 
+    54:         <%= g.fields_for @goal.periods.build do |per| %>
+    55:           <%= render periods_new_path, locals: { form: per } %>
+    56:         <% end %>
+    57: 
+    58:         <%= submit_tag("Crear objetivo") %>
+  
+app/views/goals/new.html.erb:55:in `block (2 levels) in _app_views_goals_new_html_erb___1661436025317388037_47061088300660'
+app/views/goals/new.html.erb:54:in `block in _app_views_goals_new_html_erb___1661436025317388037_47061088300660'
+app/views/goals/new.html.erb:14:in `_app_views_goals_new_html_erb___1661436025317388037_47061088300660'
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-04 16:46:05 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (299.5ms)
+Completed 500 Internal Server Error in 304ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_pariod_path' for #<#<Class:0x0000559a86e6cc58>:0x00007fa005c1a4b0>
+Did you mean?  new_period_path):
+    52:         <%= g.hidden_field :user_id, :value => current_user.id %>
+    53: 
+    54:         <%= g.fields_for @goal.periods.build do |per| %>
+    55:           <%= render new_pariod_path, locals: { form: per } %>
+    56:         <% end %>
+    57: 
+    58:         <%= submit_tag("Crear objetivo") %>
+  
+app/views/goals/new.html.erb:55:in `block (2 levels) in _app_views_goals_new_html_erb___1661436025317388037_70162634038720'
+app/views/goals/new.html.erb:54:in `block in _app_views_goals_new_html_erb___1661436025317388037_70162634038720'
+app/views/goals/new.html.erb:14:in `_app_views_goals_new_html_erb___1661436025317388037_70162634038720'
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-04 16:46:14 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (14.9ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (Missing partial periods/_new with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/jonathan/Documents/bioenergy/app/views"
+):
+    52:         <%= g.hidden_field :user_id, :value => current_user.id %>
+    53: 
+    54:         <%= g.fields_for @goal.periods.build do |per| %>
+    55:           <%= render new_period_path, locals: { form: per } %>
+    56:         <% end %>
+    57: 
+    58:         <%= submit_tag("Crear objetivo") %>
+  
+app/views/goals/new.html.erb:55:in `block (2 levels) in _app_views_goals_new_html_erb___1661436025317388037_70162649440160'
+app/views/goals/new.html.erb:54:in `block in _app_views_goals_new_html_erb___1661436025317388037_70162649440160'
+app/views/goals/new.html.erb:14:in `_app_views_goals_new_html_erb___1661436025317388037_70162649440160'
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-04 16:47:21 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered periods/_new.html.erb (2.0ms)
+  Rendered goals/new.html.erb within layouts/application (16.2ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <body>
+    2:   <div class="container margin-top">
+    3:     <%= form_for @period do |p| %>
+    4: 
+    5:       <% if @period.errors.any? %>
+    6:         <div class="error_messages">
+  
+app/views/periods/_new.html.erb:3:in `_app_views_periods__new_html_erb___776069413330504521_70162634355160'
+app/views/goals/new.html.erb:55:in `block (2 levels) in _app_views_goals_new_html_erb___1661436025317388037_70162638112900'
+app/views/goals/new.html.erb:54:in `block in _app_views_goals_new_html_erb___1661436025317388037_70162638112900'
+app/views/goals/new.html.erb:14:in `_app_views_goals_new_html_erb___1661436025317388037_70162638112900'
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-04 16:53:56 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered periods/_new.html.erb (1.5ms)
+  Rendered goals/new.html.erb within layouts/application (48.6ms)
+Completed 500 Internal Server Error in 75ms (ActiveRecord: 3.4ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <body>
+    2:   <div class="container margin-top">
+    3:     <%= form_for @period do |p| %>
+    4: 
+    5:       <% if @period.errors.any? %>
+    6:         <div class="error_messages">
+  
+app/views/periods/_new.html.erb:3:in `_app_views_periods__new_html_erb___776069413330504521_70162641044000'
+app/views/goals/new.html.erb:55:in `block (2 levels) in _app_views_goals_new_html_erb___1661436025317388037_70162643945180'
+app/views/goals/new.html.erb:54:in `block in _app_views_goals_new_html_erb___1661436025317388037_70162643945180'
+app/views/goals/new.html.erb:14:in `_app_views_goals_new_html_erb___1661436025317388037_70162643945180'
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-04 17:00:35 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered periods/_new.html.erb (195.9ms)
+  Rendered goals/new.html.erb within layouts/application (206.0ms)
+Completed 500 Internal Server Error in 208ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x00007fa006f00458>:0x00007fa00763c078>
+Did you mean?  fork):
+    1: <%= form.fields_for :period do |f| %>
+    2: 
+    3:   <%= f.label "Propuesto" %><br />
+    4:   <%= f.number_field :proposed, class:"form" %>
+  
+app/views/periods/_new.html.erb:1:in `_app_views_periods__new_html_erb___776069413330504521_70162647172440'
+app/views/goals/new.html.erb:55:in `block (2 levels) in _app_views_goals_new_html_erb___1661436025317388037_70162647737720'
+app/views/goals/new.html.erb:54:in `block in _app_views_goals_new_html_erb___1661436025317388037_70162647737720'
+app/views/goals/new.html.erb:14:in `_app_views_goals_new_html_erb___1661436025317388037_70162647737720'
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-04 17:06:17 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (252.0ms)
+Completed 500 Internal Server Error in 254ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x00007fa006f00458>:0x00007fa00676ede8>):
+    52:         <%= g.hidden_field :user_id, :value => current_user.id %>
+    53: 
+    54:         <%= g.fields_for @goal.periods.build do |per| %>
+    55:           <%= render 'periods_form', form: f %>
+    56:         <% end %>
+    57: 
+    58:         <%= submit_tag("Crear objetivo") %>
+  
+app/views/goals/new.html.erb:55:in `block (2 levels) in _app_views_goals_new_html_erb___1661436025317388037_70162639977440'
+app/views/goals/new.html.erb:54:in `block in _app_views_goals_new_html_erb___1661436025317388037_70162639977440'
+app/views/goals/new.html.erb:14:in `_app_views_goals_new_html_erb___1661436025317388037_70162639977440'
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-04 17:08:02 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (8.9ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (Missing partial goals/_periods_form, application/_periods_form with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/jonathan/Documents/bioenergy/app/views"
+):
+    51:         <%= g.hidden_field :typeGoal, :value => 0 %>
+    52:         <%= g.hidden_field :user_id, :value => current_user.id %>
+    53: 
+    54:         <%= render 'periods_form', form: g %>
+    55: 
+    56:         <!--<%= g.fields_for @goal.periods.build do |per| %>
+    57:           <%= render 'periods_form', form: f %>
+  
+app/views/goals/new.html.erb:54:in `block in _app_views_goals_new_html_erb___1661436025317388037_70162634492840'
+app/views/goals/new.html.erb:14:in `_app_views_goals_new_html_erb___1661436025317388037_70162634492840'
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-04 17:09:12 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/_periods_form (0.2ms)
+  Rendered goals/new.html.erb within layouts/application (269.5ms)
+Completed 500 Internal Server Error in 272ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x00007fa006f00458>:0x00007fa0041e3a88>):
+    54:         <%= render 'periods_form', form: g %>
+    55: 
+    56:         <!--<%= g.fields_for @goal.periods.build do |per| %>
+    57:           <%= render 'periods_form', form: f %>
+    58:         <% end %>-->
+    59: 
+    60:         <%= submit_tag("Crear objetivo") %>
+  
+app/views/goals/new.html.erb:57:in `block (2 levels) in _app_views_goals_new_html_erb___1661436025317388037_70162620359380'
+app/views/goals/new.html.erb:56:in `block in _app_views_goals_new_html_erb___1661436025317388037_70162620359380'
+app/views/goals/new.html.erb:14:in `_app_views_goals_new_html_erb___1661436025317388037_70162620359380'
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-04 17:09:35 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/_periods_form (0.2ms)
+  Rendered goals/new.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 24ms (Views: 23.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-04 17:11:01 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/_periods_form.html.erb (1.8ms)
+  Rendered goals/new.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 25ms (Views: 23.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/goals" for 127.0.0.1 at 2017-11-04 17:11:14 -0500
+Processing by GoalsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0F5WEelnNtOzjNmU84bNVY0NgXKe6zycp1TS7hSQbh6+CbGT7KqQlfvs8m3b8/WqxjcfDlEGBKOiY6Eepi4Svw==", "goal"=>{"description"=>"asd", "perspective"=>"a", "generalIndicator"=>"a", "specificIndicator"=>"a", "formula"=>"a", "weight"=>"1", "measure"=>"1", "typeGoal"=>"0", "user_id"=>"1", "period"=>{"proposed"=>"21", "reached"=>"-1"}}, "commit"=>"Crear objetivo"}
+Unpermitted parameter: :period
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "goals" ("perspective", "description", "generalIndicator", "specificIndicator", "formula", "weight", "typeGoal", "measure", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["perspective", "a"], ["description", "asd"], ["generalIndicator", "a"], ["specificIndicator", "a"], ["formula", "a"], ["weight", 1], ["typeGoal", 0], ["measure", 1], ["user_id", 1], ["created_at", "2017-11-04 22:11:14.863027"], ["updated_at", "2017-11-04 22:11:14.863027"]]
+  [1m[35m (233.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/evaluated_two
+Completed 302 Found in 244ms (ActiveRecord: 233.8ms)
+
+
+Started GET "/evaluated_two" for 127.0.0.1 at 2017-11-04 17:11:15 -0500
+Processing by EvaluatedController#step_two as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_two.html.erb within layouts/application
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered evaluated/step_two.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 31ms (Views: 27.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/evaluated_two" for 127.0.0.1 at 2017-11-04 17:11:21 -0500
+Processing by EvaluatedController#step_two as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_two.html.erb within layouts/application
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered evaluated/step_two.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 24ms (Views: 21.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/evaluated_one" for 127.0.0.1 at 2017-11-04 17:11:22 -0500
+Processing by EvaluatedController#step_one as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.3ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering evaluated/step_one.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."departament_id" = 2[0m
+  Rendered evaluated/step_one.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 35ms (Views: 19.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/evaluated_one" for 127.0.0.1 at 2017-11-04 17:15:17 -0500
+Processing by EvaluatedController#step_one as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.1ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering evaluated/step_one.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."departament_id" = 2[0m
+  Rendered evaluated/step_one.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 23ms (Views: 20.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/evaluated_two" for 127.0.0.1 at 2017-11-04 17:15:18 -0500
+Processing by EvaluatedController#step_two as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_two.html.erb within layouts/application
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered evaluated/step_two.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 47ms (Views: 43.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/evaluated_two" for 127.0.0.1 at 2017-11-04 17:15:18 -0500
+Processing by EvaluatedController#step_two as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_two.html.erb within layouts/application
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered evaluated/step_two.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-04 17:15:21 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/_periods_form.html.erb (3.0ms)
+  Rendered goals/_periods_form.html.erb (1.6ms)
+  Rendered goals/_periods_form.html.erb (1.8ms)
+  Rendered goals/new.html.erb within layouts/application (27.8ms)
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-04 17:15:21 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+Completed 200 OK in 61ms (Views: 58.5ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/_periods_form.html.erb (1.6ms)
+  Rendered goals/_periods_form.html.erb (0.9ms)
+  Rendered goals/_periods_form.html.erb (0.9ms)
+  Rendered goals/new.html.erb within layouts/application (24.7ms)
+Completed 200 OK in 47ms (Views: 45.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/goals" for 127.0.0.1 at 2017-11-04 17:15:42 -0500
+Processing by GoalsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DpciAgYyNXjxpNHdE51z/6TviM1GYYuwAOTImysxYCHqoFvOF05hA6WrXHW8w0nY5VwpssNevNoSBtk0p/80KQ==", "goal"=>{"description"=>"asd", "perspective"=>"dsa", "generalIndicator"=>"asd", "specificIndicator"=>"asd", "formula"=>"dsa", "weight"=>"1", "measure"=>"1", "typeGoal"=>"0", "user_id"=>"1", "period"=>{"proposed"=>"2", "reached"=>"-1"}}, "commit"=>"Crear objetivo"}
+Unpermitted parameter: :period
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "goals" ("perspective", "description", "generalIndicator", "specificIndicator", "formula", "weight", "typeGoal", "measure", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["perspective", "dsa"], ["description", "asd"], ["generalIndicator", "asd"], ["specificIndicator", "asd"], ["formula", "dsa"], ["weight", 1], ["typeGoal", 0], ["measure", 1], ["user_id", 1], ["created_at", "2017-11-04 22:15:42.476193"], ["updated_at", "2017-11-04 22:15:42.476193"]]
+  [1m[35m (221.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/evaluated_two
+Completed 302 Found in 229ms (ActiveRecord: 222.1ms)
+
+
+Started GET "/evaluated_two" for 127.0.0.1 at 2017-11-04 17:15:42 -0500
+Processing by EvaluatedController#step_two as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_two.html.erb within layouts/application
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered evaluated/step_two.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 29ms (Views: 25.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-04 17:20:52 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/_periods_form.html.erb (1.8ms)
+  Rendered goals/_periods_form.html.erb (2.2ms)
+  Rendered goals/_periods_form.html.erb (1.4ms)
+  Rendered goals/new.html.erb within layouts/application (27.2ms)
+Completed 200 OK in 47ms (Views: 45.6ms | ActiveRecord: 0.1ms)
+
+

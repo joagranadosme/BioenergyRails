@@ -1,0 +1,27 @@
+<body>
+  <div class="container margin-top">
+    <%= form_for @period do |p| %>
+
+      <% if @period.errors.any? %>
+        <div class="error_messages">
+          <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            <strong>Form is invalid</strong>
+            <ul>
+              <% for message in @period.errors.full_messages %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+
+      <%= p.label "Propuesto" %><br />
+      <%= p.number_field :proposed, class:"form" %>
+
+      <%= p.hidden_field :reached, :value => -1 %>
+
+      <%= submit_tag("Crear periodo") %>
+    <% end %>
+
+  </div>

@@ -28,10 +28,11 @@ class User < ApplicationRecord
   validates_presence_of :email, :document
   validates_uniqueness_of :email, :document
 
-  belongs_to :departament
-  belongs_to :role
-  belongs_to :charge
-  belongs_to :area
+  belongs_to  :departament
+  belongs_to  :role
+  belongs_to  :charge
+  belongs_to  :area
+  has_many    :goals
 
   def getBosses
     User.all

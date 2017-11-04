@@ -1,0 +1,8 @@
+<%= form.fields_for :period do |f| %>
+
+  <%= f.label "Propuesto" %><br />
+  <%= f.number_field :proposed, class:"form" %>
+
+  <%= f.hidden_field :reached, :value => -1 %>
+
+<% end %>
