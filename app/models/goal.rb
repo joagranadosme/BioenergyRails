@@ -30,4 +30,8 @@ class Goal < ApplicationRecord
     Goal.where(user_id: user.id)
   end
 
+  def self.get_total_weight
+    self.sum(:weight)    
+  end
+
 end

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :set_user, only: [:update]
+
   def new
     @user = User.new
   end
@@ -13,9 +15,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    if @user.update(user_params)
+      redirect_to index_path, notice: 'Cambios guardados correctamente'
+    end
+  end
+
   private
+    def set_user
+      @user = User.find(params[:id])
+    end
+
     def user_params
-      params.require(:user).permit(:name, :email, :document, :idRol, :idPosition, :idDepartament, :idArea, :idBoss, :step, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :document, :idRol, :idPosition,
+        :idDepartament, :idArea, :idBoss, :step, :password, :password_confirmation,
+        :boss)
     end
 
 end
