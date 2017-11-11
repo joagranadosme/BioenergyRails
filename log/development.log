@@ -20383,3 +20383,149 @@ Processing by HomeController#evaluator as HTML
 Completed 200 OK in 47ms (Views: 43.2ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/index" for 127.0.0.1 at 2017-11-11 15:00:09 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 57ms (Views: 51.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/evaluated" for 127.0.0.1 at 2017-11-11 15:00:12 -0500
+Processing by HomeController#evaluated as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/evaluated.html.erb within layouts/application
+  Rendered home/evaluated.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 58ms (Views: 54.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/evaluated_two" for 127.0.0.1 at 2017-11-11 15:00:15 -0500
+Processing by EvaluatedController#step_two as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_two.html.erb within layouts/application
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT SUM("goals"."weight") FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered evaluated/step_two.html.erb within layouts/application (23.1ms)
+Completed 200 OK in 62ms (Views: 55.5ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/evaluated_one" for 127.0.0.1 at 2017-11-11 15:00:20 -0500
+Processing by EvaluatedController#step_one as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.3ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_one.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."departament_id" = 1[0m
+  Rendered evaluated/step_one.html.erb within layouts/application (76.2ms)
+Completed 200 OK in 115ms (Views: 108.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/evaluator_one" for 127.0.0.1 at 2017-11-11 15:00:30 -0500
+Processing by EvaluatorController#step_one as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering evaluator/step_one.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."boss" = ?[0m  [["boss", 2]]
+  Rendered evaluator/step_one.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 50ms (Views: 45.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/evaluator_one" for 127.0.0.1 at 2017-11-11 15:19:33 -0500
+Processing by EvaluatorController#step_one as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering evaluator/step_one.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."boss" = ?[0m  [["boss", 2]]
+  Rendered evaluator/step_one.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 75ms (Views: 34.8ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-11-11 15:19:35 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mDepartament Load (0.4ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.3ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mArea Load (0.3ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (71.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 115ms (Views: 104.6ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-11-11 15:20:10 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mDepartament Load (0.4ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.5ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCharge Load (0.4ms)[0m  [1m[34mSELECT  "charges".* FROM "charges" WHERE "charges"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mArea Load (0.5ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (34.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 109ms (Views: 97.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/evaluated_two" for 127.0.0.1 at 2017-11-11 15:29:07 -0500
+Processing by EvaluatedController#step_two as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_two.html.erb within layouts/application
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("goals"."weight") FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered evaluated/step_two.html.erb within layouts/application (19.9ms)
+Completed 200 OK in 67ms (Views: 52.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/index" for 127.0.0.1 at 2017-11-11 15:29:14 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (18.7ms)
+Completed 200 OK in 93ms (Views: 84.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/evaluator" for 127.0.0.1 at 2017-11-11 15:29:17 -0500
+Processing by HomeController#evaluator as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering home/evaluator.html.erb within layouts/application
+  Rendered home/evaluator.html.erb within layouts/application (22.2ms)
+Completed 200 OK in 71ms (Views: 66.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/evaluator_two" for 127.0.0.1 at 2017-11-11 15:29:18 -0500
+Processing by EvaluatorController#step_two as HTML
+  Rendering evaluator/step_two.html.erb within layouts/application
+  Rendered evaluator/step_two.html.erb within layouts/application (25.4ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    23:       <% if @goals == [] %>
+    24:         <p>No tienes objetivos</p>
+    25:       <% else %>
+    26:         <% @goals.each do |g| %>
+    27:           <p><%= g.perspective %></p><br>
+    28:           <p><%= g.weight %></p><br>
+    29:           <% counter += g.weight %>
+  
+app/views/evaluator/step_two.html.erb:26:in `_app_views_evaluator_step_two_html_erb__4088925607313907071_70206945157240'
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-11 15:29:24 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (22.8ms)
+Completed 200 OK in 110ms (Views: 48.3ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/evaluated_two" for 127.0.0.1 at 2017-11-11 15:29:43 -0500
+Processing by EvaluatedController#step_two as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_two.html.erb within layouts/application
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("goals"."weight") FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered evaluated/step_two.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 50ms (Views: 45.7ms | ActiveRecord: 0.9ms)
+
+

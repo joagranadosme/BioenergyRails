@@ -11,27 +11,11 @@
 
   <body>
     <div class="container margin-top">
-
-      <h3><%= link_to "Evaluador", evaluator_path, class:"myh-link" %><span style="color: rgb( 92, 148, 74);"> >> Paso 1</span></h3>
-      <h5 class="myh">Escoge a tu jefe</h5>
-
-      <br>
-      <p>
-        Chachara
-      </p>
-      <br>
-
-      <% @employees.each do |e| %>
-          <div style="row">
-            <div class="col-md-4">
-            <h5><%= e.name %></h5>
-            <h4><%= link_to "Ver", user_path(e) %></h4>
-          </div>
-        </div>
-      <% end %>
-
-      <h4><%= link_to "Aceptar", evaluator_accept_path, class:"btn" %></h4>
-
+      <%= @user.name %>
+      <%= Departament.find(@user.departament_id).name %>
+      <%= Role.find(@user.role_id).name %>
+      <%= Charge.find(@user.charge_id).name %>
+      <%= Area.find(@user.area_id).name %>
     </div>
   </body>
 </html>
