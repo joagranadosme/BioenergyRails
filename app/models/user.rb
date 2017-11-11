@@ -34,8 +34,12 @@ class User < ApplicationRecord
   belongs_to  :area
   has_many    :goals
 
-  def getBosses
-    User.all
+  def get_bosses
+    User.where(departament: self.departament)
+  end
+
+  def get_employees
+    User.where(boss: self.id)
   end
 
   def self.authenticate(document, password)

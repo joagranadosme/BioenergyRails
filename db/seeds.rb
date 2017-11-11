@@ -25,12 +25,12 @@ Role.create(name: "EvaluadorEvaluado")
 
 #user
 User.create(name: "Jonathan Granados", email: "joagranadosmendez@unal.edu.co", document: 1032459412, step: 0, boss: nil,
-  area: Area.find(1), charge: Charge.find(2), departament: Departament.find(2), role: Role.find(2), password: "1234", password_confirmation: "1234")
+  area: Area.find(1), charge: Charge.find(1), departament: Departament.find(1), role: Role.find(2), password: "1234", password_confirmation: "1234")
 
 User.create(name: "Alexander Forero", email: "alexander:forero@gmail.com", document: 1234, step: 0, boss: nil,
   area: Area.find(1), charge: Charge.find(1), departament: Departament.find(1), role: Role.find(1), password: "1234", password_confirmation: "1234")
 
-User.new(name: "Jonathan Granados", email: "joagranadosmendez@unal.edu.co", document: 1032459412, step: 0, boss: nil,
+User.new(name: "Jonathan Prieto", email: "jprieto@gmal.com", document: 5678, step: 0, boss: nil,
   area: Area.find(1), charge: Charge.find(2), departament: Departament.find(1), role: Role.find(3), password: "1234", password_confirmation: "1234")
 
 #Random user

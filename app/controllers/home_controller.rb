@@ -5,12 +5,12 @@ class HomeController < ApplicationController
       @role = current_user.role
     end
 
-    def evaluator
+    def evaluated
       @step = current_user.step
     end
 
-    def evaluated
-      @step = current_user.step
+    def evaluator
+      @employees = current_user.get_employees
     end
 
 end

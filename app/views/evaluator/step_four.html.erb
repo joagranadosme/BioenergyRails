@@ -12,10 +12,20 @@
   <body>
     <div class="container margin-top">
 
-        <h4><%= link_to "Paso 1", evaluator_step_one_path, class:"btn" %></h4>
-        <h4><%= link_to "Paso 2", evaluator_step_two_path, class:"btn" %></h4>
-        <h4><%= link_to "Paso 3", evaluator_step_three_path, class:"btn" %></h4>
-        <h4><%= link_to "Paso 4", evaluator_step_four_path, class:"btn" %></h4>
+      <h3><%= link_to "Ser evaluado", evaluated_path, class:"myh-link" %><span style="color: rgb( 92, 148, 74);"> >> Paso 4</span></h3>
+      <h5 class="myh">Evaluación</h5>
+
+      <br>
+      <h5>Chachara</h5>
+      <br>
+
+      <div style="row">
+        <div class="col-xs-offset-8 col-xs-4">
+          <h4>
+            <%= link_to "Aceptar", evaluated_path, class:"btn" %>
+          </h4>
+        </div>
+      </div>
 
     </div>
   </body>

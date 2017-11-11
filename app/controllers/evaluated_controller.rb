@@ -3,7 +3,7 @@ class EvaluatedController < ApplicationController
   def step_one
     @user = current_user
     @step = current_user.step
-    @bosses = User.where(departament: current_user.departament)
+    @bosses = current_user.get_bosses
   end
 
   def step_two
