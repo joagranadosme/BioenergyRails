@@ -4,10 +4,11 @@ class GoalsController < ApplicationController
 
   def new
     @goal = Goal.new
+    @goal.periods.build
   end
 
   def create
-    @goal = Goal.new(goal_params)
+    @goal = Goal.new(goal_params)    
     if @goal.save
       redirect_to evaluated_step_two_path
     else
@@ -22,7 +23,10 @@ class GoalsController < ApplicationController
 
     def goal_params
       params.require(:goal).permit(:perspective, :description, :generalIndicator,
-         :specificIndicator, :formula, :weight, :typeGoal, :measure, :user_id)
+         :specificIndicator, :formula, :weight, :typeGoal, :measure, :user_id,
+         periods_attributes: [:periods, :attributes])
+
+         #[:hobbies, :attributes]
     end
 
 end

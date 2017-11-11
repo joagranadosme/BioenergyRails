@@ -21,7 +21,6 @@ class Goal < ApplicationRecord
 
   belongs_to  :user
   has_many    :periods
-
   accepts_nested_attributes_for :periods
 
   validates_presence_of :perspective, :description, :generalIndicator,

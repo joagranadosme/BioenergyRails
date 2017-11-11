@@ -51,23 +51,16 @@
         <%= g.hidden_field :typeGoal, :value => 0 %>
         <%= g.hidden_field :user_id, :value => current_user.id %>
 
-        <select id="property_type">
-          <option value='type_1'>Type 1</option>
-          <option value='type_2'>Type 2</option>
-        </select>
-        
-        <div id='type_1' class='type_forms'>
-          <form></form>
-        </div>
-
-        <div id='type_2' class='type_forms'>
-          <form></form>
-        </div>
+        <%= g.label "Periodos" %>
+        <%= g.select :num_periods, options_for_select([["Mensual", 12], ["Semestral", 6], ["Trimestral", 4], ["Anual", 1]]) %>
 
         <h3>Metas</h3>
-        <div id="periods"></div>
-        <% for i in 1..3 %>
-        <%= render 'periods_form', form: g %>
+        <% for i in (1..4) %>
+          <%= g.fields_for :periods do |p| %>
+            <%= p.label "Propuesto" %>
+            <%= p.number_field :proposed, class:"form" %>
+            <%= p.hidden_field :reached, :value => -1 %>
+          <% end %>
         <% end %>
 
         <%= submit_tag("Crear objetivo") %>

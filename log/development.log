@@ -16625,3 +16625,397 @@ Processing by GoalsController#new as HTML
 Completed 200 OK in 28ms (Views: 26.7ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-11-09 12:59:13 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (477.8ms)
+Completed 200 OK in 568ms (Views: 548.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-11-09 12:59:34 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZXVXGgWzHko8UzZNTmXTLVm6zlJph/cwc6VIugjT+E6qzSYB9Lq7abZscO2TousaZaDO581zOJ4AT7V13x5Thw==", "document"=>"1032459412", "password"=>"[FILTERED]", "commit"=>"Ingresar"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+Redirected to http://localhost:3000/index
+Completed 302 Found in 171ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/index" for 127.0.0.1 at 2017-11-09 12:59:34 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 90ms (Views: 42.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/evaluated" for 127.0.0.1 at 2017-11-09 12:59:38 -0500
+Processing by HomeController#evaluated as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/evaluated.html.erb within layouts/application
+  Rendered home/evaluated.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 64ms (Views: 42.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/evaluated_one" for 127.0.0.1 at 2017-11-09 12:59:40 -0500
+Processing by EvaluatedController#step_one as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.2ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering evaluated/step_one.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."departament_id" = 2[0m
+  Rendered evaluated/step_one.html.erb within layouts/application (21.3ms)
+Completed 200 OK in 54ms (Views: 33.8ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/evaluated_two" for 127.0.0.1 at 2017-11-09 12:59:47 -0500
+Processing by EvaluatedController#step_two as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_two.html.erb within layouts/application
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered evaluated/step_two.html.erb within layouts/application (22.7ms)
+Completed 200 OK in 106ms (Views: 43.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:03:12 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered periods/_new.html.erb (239.8ms)
+  Rendered goals/_periods_form.html.erb (241.7ms)
+  Rendered goals/new.html.erb within layouts/application (778.6ms)
+Completed 500 Internal Server Error in 783ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x00007f196437d960>:0x00007f1969e13c30>
+Did you mean?  fork):
+    1: <%= form.fields_for :period do |f| %>
+    2: 
+    3:   <%= f.label "Propuesto" %><br />
+    4:   <%= f.number_field :proposed, class:"form" %>
+  
+app/views/periods/_new.html.erb:1:in `_app_views_periods__new_html_erb___2147087762554945673_69873562453380'
+app/views/goals/_periods_form.html.erb:1:in `_app_views_goals__periods_form_html_erb__2527349558952627521_69873563224200'
+app/views/goals/new.html.erb:70:in `block (2 levels) in _app_views_goals_new_html_erb__2903518136263877980_69873516146940'
+app/views/goals/new.html.erb:69:in `block in _app_views_goals_new_html_erb__2903518136263877980_69873516146940'
+app/views/goals/new.html.erb:14:in `_app_views_goals_new_html_erb__2903518136263877980_69873516146940'
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:04:10 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/_periods_form.html.erb (1.9ms)
+  Rendered goals/_periods_form.html.erb (1.3ms)
+  Rendered goals/_periods_form.html.erb (1.5ms)
+  Rendered goals/new.html.erb within layouts/application (16.9ms)
+Completed 200 OK in 34ms (Views: 31.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:09:37 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (26.6ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `state' for #<Goal:0x00007f19690629d8>):
+    52:         <%= g.hidden_field :user_id, :value => current_user.id %>
+    53: 
+    54:         <%= g.label "Periodos" %>
+    55:         <%= g.select :state, options_for_select([["Mensual", 12], ["Semestral", 6], ["Trimestral", 4], ["Anual", 1]]) %>
+    56: 
+    57:         <h3>Metas</h3>
+    58:         <div id="periods"></div>
+  
+app/views/goals/new.html.erb:55:in `block in _app_views_goals_new_html_erb__2903518136263877980_69873556415360'
+app/views/goals/new.html.erb:14:in `_app_views_goals_new_html_erb__2903518136263877980_69873556415360'
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:10:02 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/_periods_form.html.erb (1.5ms)
+  Rendered goals/_periods_form.html.erb (1.0ms)
+  Rendered goals/_periods_form.html.erb (0.9ms)
+  Rendered goals/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 35ms (Views: 33.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:13:12 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (17.2ms)
+Completed 200 OK in 37ms (Views: 35.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:13:52 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 33ms (Views: 32.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:14:46 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/_periods_form.html.erb (2.1ms)
+  Rendered goals/_periods_form.html.erb (1.3ms)
+  Rendered goals/_periods_form.html.erb (1.2ms)
+  Rendered goals/new.html.erb within layouts/application (22.2ms)
+Completed 200 OK in 38ms (Views: 36.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:14:48 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/_periods_form.html.erb (1.5ms)
+  Rendered goals/_periods_form.html.erb (0.9ms)
+  Rendered goals/_periods_form.html.erb (1.1ms)
+  Rendered goals/new.html.erb within layouts/application (15.7ms)
+Completed 200 OK in 39ms (Views: 37.2ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/goals" for 127.0.0.1 at 2017-11-09 13:14:57 -0500
+Processing by GoalsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NnuunyFXN3bkhu0XmkNDSpJ5ooT4jkwvIYtn4pLA3UH5w9+E0F6SVW65q7dHhHt9rmOiMVx6g4FSYZotRQ12iA==", "goal"=>{"description"=>"asd", "perspective"=>"asd", "generalIndicator"=>"asd", "specificIndicator"=>"asd", "formula"=>"as", "weight"=>"1", "measure"=>"2", "typeGoal"=>"0", "user_id"=>"1", "num_periods"=>"12", "period"=>{"proposed"=>"3", "reached"=>"-1"}}, "commit"=>"Crear objetivo"}
+Unpermitted parameters: :num_periods, :period
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "goals" ("perspective", "description", "generalIndicator", "specificIndicator", "formula", "weight", "typeGoal", "measure", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["perspective", "asd"], ["description", "asd"], ["generalIndicator", "asd"], ["specificIndicator", "asd"], ["formula", "as"], ["weight", 1], ["typeGoal", 0], ["measure", 2], ["user_id", 1], ["created_at", "2017-11-09 18:14:57.639330"], ["updated_at", "2017-11-09 18:14:57.639330"]]
+  [1m[35m (267.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/evaluated_two
+Completed 302 Found in 280ms (ActiveRecord: 268.9ms)
+
+
+Started GET "/evaluated_two" for 127.0.0.1 at 2017-11-09 13:14:57 -0500
+Processing by EvaluatedController#step_two as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_two.html.erb within layouts/application
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered evaluated/step_two.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 25ms (Views: 22.1ms | ActiveRecord: 0.5ms)
+
+
+  [1m[36mGoal Load (1.0ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPeriod Load (0.2ms)[0m  [1m[34mSELECT  "periods".* FROM "periods" WHERE "periods"."goal_id" = ? LIMIT ?[0m  [["goal_id", 3], ["LIMIT", 11]]
+  [1m[36mPeriod Load (0.2ms)[0m  [1m[34mSELECT  "periods".* FROM "periods" WHERE "periods"."goal_id" = ? LIMIT ?[0m  [["goal_id", 3], ["LIMIT", 11]]
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:24:17 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/new.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 1.3ms)
+
+
+  
+SyntaxError (/home/jonathan/Documents/bioenergy/app/views/goals/new.html.erb:74: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+                ^):
+  
+app/views/goals/new.html.erb:74: syntax error, unexpected keyword_ensure, expecting keyword_end
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:24:39 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/new.html.erb within layouts/application (1.5ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/jonathan/Documents/bioenergy/app/views/goals/new.html.erb:74: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+                ^):
+  
+app/views/goals/new.html.erb:74: syntax error, unexpected keyword_ensure, expecting keyword_end
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:25:13 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (42.1ms)
+Completed 200 OK in 61ms (Views: 58.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:26:37 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/new.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 1.4ms)
+
+
+  
+SyntaxError (/home/jonathan/Documents/bioenergy/app/views/goals/new.html.erb:74: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+                ^):
+  
+app/views/goals/new.html.erb:74: syntax error, unexpected keyword_ensure, expecting keyword_end
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:27:23 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/new.html.erb within layouts/application (1.5ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 1.2ms)
+
+
+  
+SyntaxError (/home/jonathan/Documents/bioenergy/app/views/goals/new.html.erb:74: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+                ^):
+  
+app/views/goals/new.html.erb:74: syntax error, unexpected keyword_ensure, expecting keyword_end
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:27:45 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (49.1ms)
+Completed 200 OK in 66ms (Views: 62.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:28:10 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 30ms (Views: 27.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:28:37 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 34ms (Views: 32.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:30:25 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/new.html.erb within layouts/application (13.7ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    49:         <%= g.number_field :measure, class:"form" %>
+    50: 
+    51:         <%= g.hidden_field :typeGoal, :value => 0 %>
+    52:         <%= g.hidden_field :user_id, :value => current_user.id %>
+    53: 
+    54:         <%= g.label "Periodos" %>
+    55:         <%= g.select :num_periods, options_for_select([["Mensual", 12], ["Semestral", 6], ["Trimestral", 4], ["Anual", 1]]) %>
+  
+app/views/goals/new.html.erb:52:in `block in _app_views_goals_new_html_erb__2903518136263877980_69873564449620'
+app/views/goals/new.html.erb:14:in `_app_views_goals_new_html_erb__2903518136263877980_69873564449620'
+Started GET "/" for 127.0.0.1 at 2017-11-09 13:30:54 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 21ms (Views: 20.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2017-11-09 13:30:58 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6YQJtlA96oZq7uwFJSwN4XpdPN9g2JAYr+TTXWRi/oxLKd7snDsYtT7HG8AfEPe3n/BGqDjETGuAVC/wNrLSSw==", "document"=>"1032459412", "password"=>"[FILTERED]", "commit"=>"Ingresar"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."document" = ? LIMIT ?[0m  [["document", 1032459412], ["LIMIT", 1]]
+Redirected to http://localhost:3000/index
+Completed 302 Found in 82ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/index" for 127.0.0.1 at 2017-11-09 13:30:58 -0500
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 32ms (Views: 18.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/evaluated" for 127.0.0.1 at 2017-11-09 13:31:02 -0500
+Processing by HomeController#evaluated as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/evaluated.html.erb within layouts/application
+  Rendered home/evaluated.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 23ms (Views: 21.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/evaluated_one" for 127.0.0.1 at 2017-11-09 13:31:04 -0500
+Processing by EvaluatedController#step_one as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartament Load (0.2ms)[0m  [1m[34mSELECT  "departaments".* FROM "departaments" WHERE "departaments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering evaluated/step_one.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."departament_id" = 2[0m
+  Rendered evaluated/step_one.html.erb within layouts/application (11.7ms)
+Completed 200 OK in 59ms (Views: 33.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/evaluated_two" for 127.0.0.1 at 2017-11-09 13:31:15 -0500
+Processing by EvaluatedController#step_two as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_two.html.erb within layouts/application
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered evaluated/step_two.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 22ms (Views: 19.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:31:16 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 32ms (Views: 30.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:33:00 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (32.2ms)
+Completed 200 OK in 94ms (Views: 55.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2017-11-09 13:33:41 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered goals/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 34ms (Views: 30.8ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/goals" for 127.0.0.1 at 2017-11-09 13:34:09 -0500
+Processing by GoalsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"egmzQb2jxIoI7kDPH8mTm9Xr5s2oJXPWcdT3XOcriqDYpGQbcaU2uVzHtwol9WnNMEacuvA5r6VeZAvxtfumZw==", "goal"=>{"description"=>"asd", "perspective"=>"asd", "generalIndicator"=>"asd", "specificIndicator"=>"asd", "formula"=>"asd", "weight"=>"1", "measure"=>"1", "typeGoal"=>"0", "user_id"=>"1", "num_periods"=>"12", "periods_attributes"=>{"0"=>{"proposed"=>"1", "reached"=>"-1"}, "1"=>{"proposed"=>"1", "reached"=>"-1"}, "2"=>{"proposed"=>"1", "reached"=>"-1"}, "3"=>{"proposed"=>"1", "reached"=>"-1"}}}, "commit"=>"Crear objetivo"}
+Unpermitted parameters: :proposed, :reached
+Unpermitted parameters: :proposed, :reached
+Unpermitted parameters: :proposed, :reached
+Unpermitted parameters: :proposed, :reached
+Unpermitted parameter: :num_periods
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "goals" ("perspective", "description", "generalIndicator", "specificIndicator", "formula", "weight", "typeGoal", "measure", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["perspective", "asd"], ["description", "asd"], ["generalIndicator", "asd"], ["specificIndicator", "asd"], ["formula", "asd"], ["weight", 1], ["typeGoal", 0], ["measure", 1], ["user_id", 1], ["created_at", "2017-11-09 18:34:09.801005"], ["updated_at", "2017-11-09 18:34:09.801005"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "periods" ("goal_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["goal_id", 4], ["created_at", "2017-11-09 18:34:09.803547"], ["updated_at", "2017-11-09 18:34:09.803547"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "periods" ("goal_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["goal_id", 4], ["created_at", "2017-11-09 18:34:09.804801"], ["updated_at", "2017-11-09 18:34:09.804801"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "periods" ("goal_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["goal_id", 4], ["created_at", "2017-11-09 18:34:09.805735"], ["updated_at", "2017-11-09 18:34:09.805735"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "periods" ("goal_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["goal_id", 4], ["created_at", "2017-11-09 18:34:09.806616"], ["updated_at", "2017-11-09 18:34:09.806616"]]
+  [1m[35m (188.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/evaluated_two
+Completed 302 Found in 210ms (ActiveRecord: 190.0ms)
+
+
+Started GET "/evaluated_two" for 127.0.0.1 at 2017-11-09 13:34:10 -0500
+Processing by EvaluatedController#step_two as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering evaluated/step_two.html.erb within layouts/application
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered evaluated/step_two.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 25ms (Views: 21.6ms | ActiveRecord: 0.4ms)
+
+
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT  "goals".* FROM "goals" WHERE "goals"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPeriod Load (0.2ms)[0m  [1m[34mSELECT  "periods".* FROM "periods" WHERE "periods"."goal_id" = ? LIMIT ?[0m  [["goal_id", 4], ["LIMIT", 11]]
